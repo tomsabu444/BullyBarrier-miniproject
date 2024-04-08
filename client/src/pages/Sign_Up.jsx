@@ -1,8 +1,9 @@
 import React from 'react'
+import { SignUp } from "@clerk/clerk-react";
 
 function Sign_Up() {
   return (
-    <div>Sign_Up</div>
+    <SignUp />
   )
 }
 
