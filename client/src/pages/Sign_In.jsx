@@ -1,9 +1,14 @@
 import React from 'react'
 import { SignIn } from "@clerk/clerk-react";
 
+import "./style/sign.css"
+
 function Sign_In() {
   return (
-     <SignIn/>
+    <div className="container">
+      <SignIn/>
+    </div>
+     
   )
 }
 
