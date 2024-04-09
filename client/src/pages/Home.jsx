@@ -5,9 +5,8 @@ import { useUser } from "@clerk/clerk-react";
 
 function Home() {
 
-  const { isSignedIn, user, isLoaded } = useUser();
+  const { isSignedIn, user} = useUser();
 
- 
   if (isSignedIn) {
     return (<div>Hello {user.fullName}!
     <h1>Home page</h1>
