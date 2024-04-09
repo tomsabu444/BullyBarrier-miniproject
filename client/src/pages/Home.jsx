@@ -1,13 +1,22 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 
+import { useUser } from "@clerk/clerk-react";
+
 function Home() {
-  return (
-    <div>
-      <h1>Home page</h1>
+
+  const { isSignedIn, user, isLoaded } = useUser();
+
+ 
+  if (isSignedIn) {
+    return (<div>Hello {user.fullName}!
+    <h1>Home page</h1>
       <Navbar />
-    </div>
-  );
+    </div>);
+  }
+ 
+  return <div>Not signed in</div>;
 }
+
 
 export default Home;
