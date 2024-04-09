@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 
 import { useUser } from "@clerk/clerk-react";
+import Sign_In from "./Sign_In";
 
 function Home() {
 
@@ -14,7 +15,7 @@ function Home() {
     </div>);
   }
  
-  return <div>Not signed in</div>;
+  return <div><Sign_In/></div>;
 }
 
 
