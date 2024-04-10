@@ -1,8 +1,17 @@
 import React from 'react'
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 function Navbar() {
   return (
-    <div>Navbar</div>
+    <header>
+    <div>
+     
+
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </div>
+    </header>
   )
 }
 
