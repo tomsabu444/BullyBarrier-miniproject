@@ -3,6 +3,7 @@ import {
   SignedIn,
   SignedOut,
   SignInButton,
+  useClerk,
   UserButton,
 } from "@clerk/clerk-react";
 import "./style/Navbar.css";
@@ -10,6 +11,16 @@ import "./style/Navbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 
 function Navbar() {
+  const { user } = useClerk();
+
+  
+  //user name to lowerCase
+  const handleFirstname = () => {
+    return (
+      user.firstName.charAt(0).toUpperCase() +
+      user.firstName.slice(1).toLowerCase()
+    );
+  };
   return (
     <div className="navbar">
       <div className="topbar">
@@ -24,8 +35,11 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="user_button">
-          <UserButton  />
+        <div className="profile-box">
+          <h2>Hi , {handleFirstname()}</h2>
+          <div className="user_button">
+            <UserButton />
+          </div>
         </div>
       </div>
     </div>

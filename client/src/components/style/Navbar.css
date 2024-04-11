@@ -3,26 +3,30 @@
     justify-content: center;
 }
 
-.topbar{
+.topbar {
     width: 75%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.75rem  1rem;
+    padding: 1.75rem 1rem;
     background-color: var(--color-primary);
     border-radius: 0px 0px 20px 20px;
 
 }
 
-.topbar .title-name{
-    font-size: 1.25rem; /* Equivalent to text-xl */
-    font-size: 1.5rem; /* Equivalent to md:text-2xl */
-    color: #0066ff; /* Equivalent to text-[#065ad8] */
-    font-weight: 600; /* Equivalent to font-semibold */
+.topbar .title-name {
+    font-size: 1.25rem;
+    /* Equivalent to text-xl */
+    font-size: 1.5rem;
+    /* Equivalent to md:text-2xl */
+    color: #0066ff;
+    /* Equivalent to text-[#065ad8] */
+    font-weight: 600;
+    /* Equivalent to font-semibold */
     padding-left: 20px;
 }
 
-.nav_searchbaar{
+.nav_searchbaar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +43,7 @@
     border-top-left-radius: 3px;
     font-size: 14px;
     padding-left: 10px;
-  }
+}
 
 .nav_searchbaar .search_icon {
     background-color: #0066ff;
@@ -51,15 +55,31 @@
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
     cursor: pointer;
-  }
+}
 
-.user_button{
-    width: 120px;
+.profile-box {
+    display: flex;
+    align-items: center;
+    color: #0066ff;
+
+}
+
+.profile-box h2 {
+    display: block;
+    max-width: 350px;
+    padding-right: 30px;
+    word-wrap: break-word;
+    overflow: hidden;
+
+}
+
+.user_button {
+    padding-right: 50px;
 }
 
 
 @media (max-width: 768px) {
     .topbar {
-      width: 100%; 
+        width: 100%;
     }
-  }
+}
