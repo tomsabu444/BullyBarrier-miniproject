@@ -10,10 +10,12 @@ import "./style/Navbar.css";
 
 import SearchIcon from "@mui/icons-material/Search";
 
+//image
+import LogoImage from "../assets/logo-no-background.png";
+
 function Navbar() {
   const { user } = useClerk();
 
-  
   //user name to lowerCase
   const handleFirstname = () => {
     return (
@@ -24,8 +26,12 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="topbar">
-        <div className="title-name">
-          <span>Bully Barrier</span>
+        <div className="title-box">
+          <img className="title-logo" src={LogoImage} alt="logo image" />
+          <div>
+            <span className="title-name">Bully Barrier</span>
+          </div>
+          
         </div>
 
         <div className="nav_searchbaar">

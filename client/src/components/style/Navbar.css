@@ -14,16 +14,24 @@
 
 }
 
-.topbar .title-name {
-    font-size: 1.25rem;
-    /* Equivalent to text-xl */
-    font-size: 1.5rem;
-    /* Equivalent to md:text-2xl */
-    color: #0066ff;
-    /* Equivalent to text-[#065ad8] */
-    font-weight: 600;
-    /* Equivalent to font-semibold */
+.topbar .title-box {
+    display: flex;
     padding-left: 20px;
+}
+
+.title-box .title-logo{
+    width: 45px;
+    height:  auto;
+    object-fit: contain;
+}
+
+.title-name{
+    padding-left: 10px;
+    font-size: 1.25rem;
+    font-size: 1.5rem;
+    color: #0066ff;
+    font-weight: 600;
+    
 }
 
 .nav_searchbaar {
@@ -78,7 +86,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .topbar {
         width: 100%;
     }
