@@ -1,0 +1,47 @@
+.sidebar {
+    position: sticky;
+    width: 350px;
+    height: max-content;
+    padding: 20px;
+    margin: 20px 5%;
+    color: var(--color-ascent1);
+    background-color: var(--color-primary);
+    display: flex;
+    border-radius: 20px;
+    flex-direction: column;
+}
+
+.sidebar-info {
+    display: flex;
+}
+
+.avatar-box {
+    display: flex;
+    align-self: center;
+}
+
+.avatar-box img {
+    width: 50px;
+    border-radius: 60px;
+}
+
+.profile-name {
+    font-size: 16px;
+    padding-left: 15px;
+}
+
+.account-icon {
+    display: flex;
+    position: sticky;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 60px;
+    color: var(--color-blue);
+}
+
+.follow-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px 0px 10px;
+}
