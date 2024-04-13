@@ -4,14 +4,14 @@ import { useClerk } from "@clerk/clerk-react";
 
 //
 import ManageAccountsSharpIcon from "@mui/icons-material/ManageAccountsSharp";
-import Divider from "@mui/material/Divider";
+
 
 function SideBar() {
   const { user } = useClerk();
 
   const handleFullName = () => {
     return user.fullName.toUpperCase();
-  }
+  };
 
   return (
     <div className="sidebar">
@@ -27,9 +27,13 @@ function SideBar() {
           <ManageAccountsSharpIcon />
         </div>
       </div>
-      <Divider />
-      <h4>followers</h4>
-      <h4>following</h4>
+      <br />
+      <hr />
+      <br />
+      <div className="follow-list">
+        <h4>followers 0</h4>
+        <h4>following 0</h4>
+      </div>
     </div>
   );
 }
