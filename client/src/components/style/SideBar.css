@@ -1,8 +1,9 @@
 .sidebar {
+    position: sticky;
     width: 350px;
     height: max-content;
     padding: 20px;
-    margin: 20px 60px;
+    margin: 20px 5%;
     color: var(--color-ascent1);
     background-color: var(--color-primary);
     display: flex;
