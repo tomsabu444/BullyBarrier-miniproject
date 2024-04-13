@@ -1,7 +1,8 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import { useClerk } from "@clerk/clerk-react";
 import Layout from "../components/Layout";
+import "./style/Home.css"
+
 
 function Home() {
   const { user } = useClerk();

@@ -9,6 +9,10 @@ import Divider from "@mui/material/Divider";
 function SideBar() {
   const { user } = useClerk();
 
+  const handleFullName = () => {
+    return user.fullName.toUpperCase();
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebar-info">
@@ -16,7 +20,7 @@ function SideBar() {
           <img draggable="false" src={user.imageUrl} alt="user-image" />
         </div>
         <div className="profile-name">
-          <h2>{user.fullName}</h2>
+          <h2>{handleFullName()}</h2>
           <p>@{user.username}</p>
         </div>
         <div className="account-icon">
