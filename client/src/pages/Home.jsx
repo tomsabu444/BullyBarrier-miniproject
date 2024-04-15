@@ -7,7 +7,6 @@ import "./style/Home.css"
 function Home() {
   const { user } = useClerk();
 
-  console.log(user);
   return (
     <>
       <Layout>

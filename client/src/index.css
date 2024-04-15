@@ -12,9 +12,10 @@
 :root {
 
   --color-bg: rgb(12 12 12);
+  --shade-bg: rgba(12, 12, 12, 0.589);
   --color-primary: rgb(31 31 31);
   --color-secondary: rgb(47 45 48);
-  --color-ascent1: rgb(255 255 255);
+  --color-ascent1: rgba(255, 255, 255, 0.89);
   --color-ascent2: rgb(164 161 162);
   --color-blue: rgb(6 90 216);
   --color-white: rgb(255 255 255);
