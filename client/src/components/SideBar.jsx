@@ -10,6 +10,7 @@ import {
 //
 import ManageAccountsSharpIcon from "@mui/icons-material/ManageAccountsSharp";
 import { Button } from "@mui/material";
+import AlertDialog from "./AlertDialogDemo";
 
 function SideBar() {
   const { user } = useClerk();
@@ -53,9 +54,7 @@ function SideBar() {
 
           <Button>Friend Request</Button>
           {/* sign out */}
-          <SignOutButton>
-            <Button>logout</Button>
-          </SignOutButton>
+         <AlertDialog/>
       </div>
     </div>
   );
