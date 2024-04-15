@@ -26,6 +26,7 @@
 }
 
 .profile-name {
+    width: 200px;
     font-size: 16px;
     padding-left: 15px;
 }
