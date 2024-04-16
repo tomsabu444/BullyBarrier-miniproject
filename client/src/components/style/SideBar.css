@@ -3,10 +3,9 @@
     width: 380px;
     height: max-content;
     padding: 20px;
-    margin: 20px 5%;
+    margin: 20px 25px 20px 5% !important;
     color: var(--color-ascent1);
     background-color: var(--color-primary);
-    display: flex;
     border-radius: 20px;
     flex-direction: column;
 }
@@ -23,9 +22,12 @@
 .avatar-box img {
     width: 50px;
     border-radius: 60px;
+    object-fit: cover;
+    aspect-ratio:  1 / 1;
 }
 
 .profile-name {
+    width: 200px;
     font-size: 16px;
     padding-left: 15px;
 }

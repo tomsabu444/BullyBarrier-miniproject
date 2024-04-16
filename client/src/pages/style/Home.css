@@ -1,3 +1,8 @@
 body{
     background-color: #48545a;
 }
+
+hr {
+    opacity: .5;
+  }
+  
