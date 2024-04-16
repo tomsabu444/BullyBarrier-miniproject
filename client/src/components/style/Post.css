@@ -1,39 +1,50 @@
+.post {
+  position: relative;
+  /* Make the post-box a positioning context */
+  width: 45%;
+  background-color: var(--color-primary);
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 20px 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+}
+
+
 .post-box {
-    position: relative; /* Make the post-box a positioning context */
-    width: 50%;
-    background-color: var(--color-primary);
-    margin-top: 20px;
-    border-radius: 20px;
-    padding: 20px;
-    display: flex;
-    height: max-content;
-  }
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.img-box img {
+  width: 50px;
+  border-radius: 60px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.post-box textarea {
+  outline: none;
+  font-size: 17px;
+  word-wrap: break-word;
+  word-break: break-all;
+  background-color: transparent;
+  border: none;
+  margin-left: 20px;
+  color: var(--color-ascent1);
+  resize: none;
+  width: calc(100% - 80px);
+
+}
+
+.post-btn {
+  padding-top: 10px;
+  align-self: flex-end;
   
-  .img-box {
-    position: absolute; /* Position the avatar box relative to the post-box */
-    top: 20px; /* Align it to the top */
-    top: 20px; /* Align it to the left */
-  }
-  
-  .img-box img {
-    width: 50px;
-    border-radius: 60px;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-  }
-  
-  .post-box textarea {
-    outline: none;
-    font-size: 17px;
-    min-height: inherit;
-    word-wrap: break-word;
-    word-break: break-all;
-    background-color: transparent;
-    border: none;
-    margin-left: 80px; /* Adjusted margin to accommodate avatar */
-    color: var(--color-ascent1);
-    resize: none;
-    overflow-y: hidden;
-    width: calc(100% - 80px); /* Adjusted width to accommodate avatar */
-  }
-  
+}
+
+.post-btn button {
+  font-size: large;
+
+}
