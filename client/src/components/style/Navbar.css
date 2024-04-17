@@ -86,8 +86,15 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .topbar {
         width: 100%;
+    }
+
+    .nav_searchbaar{
+        display: none;
+    }
+    .profile-box h2{
+        display: none;
     }
 }

@@ -1,7 +1,6 @@
 .post {
-  position: relative;
-  /* Make the post-box a positioning context */
-  width: 40%;
+  position: static;
+  width: 45%;
   background-color: var(--color-primary);
   margin-top: 20px;
   border-radius: 20px;

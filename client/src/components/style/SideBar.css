@@ -1,9 +1,8 @@
 .sidebar {
-    position: sticky;
-    width: 380px;
+    width: 20%;
     height: max-content;
     padding: 20px;
-    margin: 20px 25px 20px 5% !important;
+    margin: 20px 25px 20px 6% !important;
     color: var(--color-ascent1);
     background-color: var(--color-primary);
     border-radius: 20px;
@@ -27,17 +26,16 @@
 }
 
 .profile-name {
-    width: 200px;
+    width: 2000px;
     font-size: 16px;
     padding-left: 15px;
 }
 
+
 .account-icon {
     display: flex;
-    position: sticky;
     align-items: center;
     cursor: pointer;
-    margin-left: 60px;
     color: var(--color-blue);
 }
 
@@ -46,7 +44,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px 30px 0px 10px;
+    gap: 20px;
 }
+
 
 .nav-list{
     display: flex;

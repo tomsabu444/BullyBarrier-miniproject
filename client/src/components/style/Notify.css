@@ -2,8 +2,7 @@
     background-color: var(--color-primary);
     border-radius: 20px;
     margin: 20px;
-    position: sticky;
-    width: 320px;
+    width: 20%;
     height: max-content;
     color: var(--color-ascent1);
     padding: 10px 20px 10px 20px
