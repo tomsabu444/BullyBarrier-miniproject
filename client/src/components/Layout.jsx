@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 import Post from "./Post";
 import "./style/Layout.css"
+import Notify from "./Notify";
 
 function Layout({ children }) {
   return (
@@ -10,7 +11,9 @@ function Layout({ children }) {
       <Navbar />
       <div className="content">
         <SideBar />
-        <Post/></div>
+        <Post/>
+        <Notify/>
+        </div>
         <div>{children}</div>
       
     </>
