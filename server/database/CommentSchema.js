@@ -9,7 +9,7 @@ const CommentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  categories: [Object], // Array of categories
+  categories: Object,
   flagged: {
     type: Boolean,
     default: false
