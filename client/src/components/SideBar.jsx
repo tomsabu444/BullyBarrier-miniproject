@@ -54,12 +54,13 @@ function SideBar() {
         <Button>Profile</Button>
 
         <Button>Friend Request</Button>
-        {/* sign out */}
-        <AlertDialog />
 
         <Link to="/team-member">
           <Button>Credits</Button>
         </Link>
+        
+        {/* sign out */}
+        <AlertDialog />
       </div>
     </div>
   );

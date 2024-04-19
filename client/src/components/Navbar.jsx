@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 //image
 import LogoImage from "../assets/logo-no-background.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const { user } = useClerk();
@@ -27,11 +28,12 @@ function Navbar() {
     <div className="navbar">
       <div className="topbar">
         <div className="title-box">
-          <img className="title-logo" src={LogoImage} alt="logo image" />
+          <Link to="/">
+            <img className="title-logo" src={LogoImage} alt="logo image" />
+          </Link>
           <div>
             <span className="title-name">Bully Barrier</span>
           </div>
-          
         </div>
 
         <div className="nav_searchbaar">
