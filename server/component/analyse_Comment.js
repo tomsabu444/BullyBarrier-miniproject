@@ -9,7 +9,7 @@ const openai = new OpenAI({
 });
 
 router.post("/content-analyse", async (req, res) => {
-  const { clerkUserId, content } = req.body; // Extract clerkUserId and content from request body
+  const { clerkUserId, content , username , email , image } = req.body; // Extract clerkUserId and content from request body
 
   try {
     const moderation = await openai.moderations.create({ input: content });
@@ -18,6 +18,9 @@ router.post("/content-analyse", async (req, res) => {
     const comment = new Comment({
       clerkUserId,
       content,
+      username,
+      email,
+      image,
       categories: moderation.results[0].categories,
       flagged: moderation.results[0].flagged,
     });
