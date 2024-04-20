@@ -1,6 +1,6 @@
 .post {
-  position: static;
-  width: 45%;
+  position: sticky;
+  min-width: 45%;
   background-color: var(--color-primary);
   margin-top: 20px;
   border-radius: 20px;
@@ -26,8 +26,7 @@
 .post-box textarea {
   outline: none;
   font-size: 17px;
-  word-wrap: break-word;
-  word-break: break-all;
+ text-wrap: nowrap;
   background-color: transparent;
   border: none;
   margin-left: 20px;

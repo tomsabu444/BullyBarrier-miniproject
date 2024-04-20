@@ -1,10 +1,10 @@
 .sidebar {
     height: max-content;
-    min-width: 250px;
+    min-width: 350px;
     position: sticky;
     top: 50px;
     padding: 20px;
-    margin: 20px 25px 20px 6% !important;
+    margin: 20px;
     color: var(--color-ascent1);
     background-color: var(--color-primary);
     border-radius: 20px;

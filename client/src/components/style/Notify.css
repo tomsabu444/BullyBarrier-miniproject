@@ -1,12 +1,13 @@
 .notify {
+    position: sticky;
     background-color: var(--color-primary);
     border-radius: 20px;
     margin: 20px;
-    width: 20%;
+    min-width: 350px;
     height: max-content;
     color: var(--color-ascent1);
     padding: 10px 20px 10px 20px
- 
+    
 }
 
 
@@ -20,6 +21,7 @@
 .notify .nofity-title h1 {
     font-size: 24px;
     padding-bottom: 10px;
+    text-wrap: wrap;
 }
 
 .Nofity-icon{
