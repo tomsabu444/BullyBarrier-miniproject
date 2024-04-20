@@ -5,4 +5,7 @@ body{
 hr {
     opacity: .5;
   }
-  
+
+  .content{
+    display: flex;
+}

@@ -1,8 +1,10 @@
 import React from "react";
 import { useClerk } from "@clerk/clerk-react";
 import Layout from "../components/Layout";
-import "./style/Home.css"
-
+import "./style/Home.css";
+import SideBar from "../components/SideBar";
+import Post from "../components/Post";
+import Notify from "../components/Notify";
 
 function Home() {
   const { user } = useClerk();
@@ -10,9 +12,10 @@ function Home() {
   return (
     <>
       <Layout>
-        <div>
-          Home page
-          <h1>Welcome {user.username}</h1>
+        <div className="content">
+          <SideBar />
+          <Post />
+          <Notify />
         </div>
       </Layout>
     </>
