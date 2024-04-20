@@ -1,6 +1,11 @@
-.post {
+.post-section {
+  display: flex;
+  flex-direction: column;
   position: sticky;
-  width: clamp(40%, 40%, 40%);
+  width: clamp(20px, 40%, 40%);
+}
+
+.post {
   background-color: var(--color-primary);
   margin-top: 20px;
   border-radius: 20px;
@@ -26,7 +31,7 @@
 .post-box textarea {
   outline: none;
   font-size: 17px;
- text-wrap: nowrap;
+  text-wrap: nowrap;
   background-color: transparent;
   border: none;
   margin-left: 20px;
@@ -39,10 +44,15 @@
 .post-btn {
   padding-top: 10px;
   align-self: flex-end;
-  
+
 }
 
 .post-btn button {
   font-size: large;
 
+}
+
+/* SHOW bost */
+.show-post{
+  margin-top: 20px;
 }
