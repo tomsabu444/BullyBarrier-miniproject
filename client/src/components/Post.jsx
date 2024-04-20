@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./style/Post.css";
 import { useClerk } from "@clerk/clerk-react";
 import { Button, TextareaAutosize } from "@mui/material";
+import ShowPost from "./ShowPost";
 
 function Post() {
   const { user } = useClerk();
@@ -12,21 +13,27 @@ function Post() {
   };
 
   return (
-    <div className="post">
-      <div className="post-box">
-        <div className="img-box">
-          <img draggable="false" src={user.imageUrl} alt="user-image" />
+    <div className="post-section">
+      <div className="post">
+        <div className="post-box">
+          <div className="img-box">
+            <img draggable="false" src={user.imageUrl} alt="user-image" />
+          </div>
+          <TextareaAutosize
+            placeholder="What's happening?!"
+            value={inputValue}
+            onChange={handleChange}
+            autoFocus
+          />
         </div>
-        <TextareaAutosize
-          placeholder="What's happening?!"
-          value={inputValue}
-          onChange={handleChange}
-          autoFocus
-        />
+        <hr />
+        <div className="post-btn">
+          <Button>Post</Button>
+        </div>
       </div>
-      <hr />
-      <div className="post-btn">
-        <Button>Post</Button>
+      
+      <div  className="show-post">
+        <ShowPost />
       </div>
     </div>
   );

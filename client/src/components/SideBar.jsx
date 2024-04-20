@@ -11,6 +11,7 @@ import {
 import ManageAccountsSharpIcon from "@mui/icons-material/ManageAccountsSharp";
 import { Button } from "@mui/material";
 import AlertDialog from "./AlertDialogDemo";
+import { Link } from "react-router-dom";
 
 function SideBar() {
   const { user } = useClerk();
@@ -50,11 +51,16 @@ function SideBar() {
       <br />
 
       <div className="nav-list">
-          <Button>Profile</Button>
+        <Button>Profile</Button>
 
-          <Button>Friend Request</Button>
-          {/* sign out */}
-         <AlertDialog/>
+        <Button>Friend Request</Button>
+
+        <Link to="/team-member">
+          <Button>Credits</Button>
+        </Link>
+        
+        {/* sign out */}
+        <AlertDialog />
       </div>
     </div>
   );

@@ -1,0 +1,40 @@
+.users-posts {
+    background-color: var(--color-primary);
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    flex-direction: column;
+    height: max-content;
+    position: sticky;
+}
+
+.users-info {
+    display: flex;
+}
+
+.users-img-box {
+    display: flex;
+    align-self: center;
+}
+
+
+.users-img-box img {
+    width: 45px;
+    border-radius: 60px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    margin-top: 5px;
+}
+
+.users-names h3 {
+    font-size: 16px;
+    padding-left: 15px;
+    color: var(--color-ascent1);
+    font-weight: 200;
+}
+
+.users-names p {
+    font-size: 14px;
+    padding-left: 15px;
+    color: var(--color-ascent1);
+    font-weight: 200;
+}
