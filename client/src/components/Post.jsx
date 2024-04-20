@@ -12,23 +12,26 @@ function Post() {
   };
 
   return (
-    <div className="post">
-      <div className="post-box">
-        <div className="img-box">
-          <img draggable="false" src={user.imageUrl} alt="user-image" />
+    <>
+      <div className="post">
+        <div className="post-box">
+          <div className="img-box">
+            <img draggable="false" src={user.imageUrl} alt="user-image" />
+          </div>
+          <TextareaAutosize
+            placeholder="What's happening?!"
+            value={inputValue}
+            onChange={handleChange}
+            autoFocus
+          />
         </div>
-        <TextareaAutosize
-          placeholder="What's happening?!"
-          value={inputValue}
-          onChange={handleChange}
-          autoFocus
-        />
+        <hr />
+        <div className="post-btn">
+          <Button>Post</Button>
+        </div>  
       </div>
-      <hr />
-      <div className="post-btn">
-        <Button>Post</Button>
-      </div>
-    </div>
+
+    </>
   );
 }
 
