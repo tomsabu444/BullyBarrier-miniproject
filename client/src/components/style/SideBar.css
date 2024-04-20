@@ -1,6 +1,6 @@
 .sidebar {
     height: max-content;
-    min-width: 350px;
+    width: clamp(250px, 350px, 50%);
     position: sticky;
     top: 50px;
     padding: 20px;

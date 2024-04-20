@@ -3,7 +3,7 @@
     background-color: var(--color-primary);
     border-radius: 20px;
     margin: 20px;
-    min-width: 350px;
+    width: clamp(250px, 350px, 50%);
     height: max-content;
     color: var(--color-ascent1);
     padding: 10px 20px 10px 20px

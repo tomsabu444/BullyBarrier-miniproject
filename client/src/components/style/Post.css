@@ -1,6 +1,6 @@
 .post {
   position: sticky;
-  min-width: 45%;
+  width: clamp(40%, 40%, 40%);
   background-color: var(--color-primary);
   margin-top: 20px;
   border-radius: 20px;
