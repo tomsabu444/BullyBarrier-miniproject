@@ -8,7 +8,6 @@
     color: var(--color-ascent1);
     background-color: var(--color-primary);
     border-radius: 20px;
-    flex-direction: column;
 }
 
 .sidebar-info {
