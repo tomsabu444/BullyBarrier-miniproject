@@ -1,10 +1,14 @@
+.feed {
+    overflow-y: auto;
+    border-radius: 10px;
+    position: sticky;
+    max-height: calc(100vh - 180px); /* Adjust the value according to your design */
+}
+
 .users-posts {
     background-color: var(--color-primary);
-    border-radius: 20px;
-    padding: 10px 20px 10px 20px;
-    flex-direction: column;
-    height: max-content;
-    position: sticky;
+    padding: 10px 20px 20px 20px;
+    height: max-content;    
 }
 
 .users-info {
@@ -22,19 +26,28 @@
     border-radius: 60px;
     object-fit: cover;
     aspect-ratio: 1 / 1;
-    margin-top: 5px;
 }
 
-.users-names h3 {
-    font-size: 16px;
+.users-names {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
     padding-left: 15px;
     color: var(--color-ascent1);
-    font-weight: 200;
+    font-size: 15px;
+    font-weight: 300;
+    flex-wrap: wrap;
 }
 
-.users-names p {
-    font-size: 14px;
-    padding-left: 15px;
-    color: var(--color-ascent1);
-    font-weight: 200;
+.users-names h4{
+ font-weight: 600;
+}
+
+.comment-box {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: rgb(44, 252, 2);
+    margin: 20px;
 }

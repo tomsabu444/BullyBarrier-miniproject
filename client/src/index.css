@@ -29,3 +29,10 @@
   height: 45px;
   width: 45px;
 }
+
+
+/* Scroll*/
+
+::-webkit-scrollbar{
+  display: none;
+}
