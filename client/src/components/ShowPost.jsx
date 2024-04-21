@@ -11,9 +11,18 @@ function ShowPost() {
           <img draggable="false" src={user.imageUrl} alt="user-image" />
         </div>
         <div className="users-names">
-          <h3>testada dasd asdasd adad</h3>
+          <h4>testada dasd asdasd adad SDAASD A AS SAD A</h4>
           <p>tomsabu444</p>
         </div>
+      </div>
+
+      <div className="comment-box">
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus
+          ex voluptatibus officiis eos quasi aspernatur distinctio
+          exercitationem cumque fugiat explicabo. Non, a. Quod, nihil
+          consequuntur. Praesentium perspiciatis repellat doloribus totam!
+        </p>
       </div>
     </div>
   );
