@@ -11,7 +11,7 @@ function ShowPost() {
           <img draggable="false" src={user.imageUrl} alt="user-image" />
         </div>
         <div className="users-names">
-          <h4>testadssssssssssssss</h4>
+          <h3>testada dasd asdasd adad</h3>
           <p>tomsabu444</p>
         </div>
       </div>
