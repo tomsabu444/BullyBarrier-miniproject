@@ -1,6 +1,8 @@
 .feed {
     overflow-y: auto;
     border-radius: 10px;
+    position: sticky;
+    max-height: calc(100vh - 180px); /* Adjust the value according to your design */
 }
 
 .users-posts {
