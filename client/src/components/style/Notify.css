@@ -1,7 +1,8 @@
 .notify {
     position: sticky;
+    top: 20px;
     background-color: var(--color-primary);
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 20px;
     width: clamp(250px, 350px, 50%);
     height: max-content;

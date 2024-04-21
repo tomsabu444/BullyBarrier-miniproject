@@ -1,8 +1,12 @@
+.feed {
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
 .users-posts {
     background-color: var(--color-primary);
-    border-radius: 20px;
-    padding: 10px 20px 10px 20px;
-    height: max-content;
+    padding: 10px 20px 20px 20px;
+    height: max-content;    
 }
 
 .users-info {
@@ -32,11 +36,10 @@
     font-size: 15px;
     font-weight: 300;
     flex-wrap: wrap;
-    font-weight: 200;
 }
 
 .users-names h4{
- font-weight: 300;
+ font-weight: 600;
 }
 
 .comment-box {

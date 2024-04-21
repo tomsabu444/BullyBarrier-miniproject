@@ -1,18 +1,21 @@
 .post-section {
   display: flex;
   flex-direction: column;
-  position: sticky;
   width: clamp(300px, 40%, 40%);
+
 }
 
 .post {
   background-color: var(--color-primary);
   margin-top: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 20px 20px 10px 20px;
   display: flex;
   flex-direction: column;
   height: max-content;
+  position: sticky;
+  top: 20px;
+  z-index: 10;
 }
 
 
