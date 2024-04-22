@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import "./style/Home.css";
 import SideBar from "../components/SideBar";
 import Post from "../components/Post";
-import Notify from "../components/Notify";
+import Notification from "../components/Notification";
 
 function Home() {
   const { user } = useClerk();
@@ -15,7 +15,7 @@ function Home() {
         <div className="content">
           <SideBar />
           <Post />
-          <Notify />
+          <Notification />
         </div>
       </Layout>
     </>
