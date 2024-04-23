@@ -1,6 +1,11 @@
+/*
+* Content Moderation from incomming comment from Frontend Tweet
+*  return message notification to front end
+*/
+
 const express = require("express");
 const OpenAI = require("openai");
-const Comment = require("../database/CommentSchema");
+const Comment = require("../database/CommentSchema"); //? Comment database Schema
 
 const router = express.Router();
 
@@ -9,12 +14,13 @@ const openai = new OpenAI({
 });
 
 router.post("/content-analyse", async (req, res) => {
-  const { clerkUserId, content , username , email , image } = req.body; // Extract clerkUserId and content from request body
+  const { clerkUserId, content, username, email, image } = req.body; //? Extract clerkUserId and content from request body
 
   try {
     const moderation = await openai.moderations.create({ input: content });
-    
-    // Save comment to MongoDB
+
+    //! Save comment to MongoDB
+
     const comment = new Comment({
       clerkUserId,
       content,
@@ -27,7 +33,7 @@ router.post("/content-analyse", async (req, res) => {
 
     await comment.save();
 
-    res.status(200).json({ message: "Comment saved successfully" });
+    res.status(200).json({ message: "Comment saved successfully" }); //? return message notification to front end
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal server error" });
