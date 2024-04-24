@@ -17,7 +17,7 @@ function Notify() {
       <hr />
 
       <div className="notification">
-      <Box component="section" sx={{ p: 2 }}>
+        <Box sx={{ p: 2 }}>
           <h3>content</h3>
         </Box>
       </div>
