@@ -36,10 +36,12 @@ function SideBar() {
           <h2>{handleFullName()}</h2>
           <p>@{user.username}</p>
         </div>
+        {/* 
+        //!  show profile button 
+        */}
         <div className="account-icon" onClick={handleClick}>
           <ManageAccountsSharpIcon />
         </div>
-        {/* <div>{showProfile && <UserProfile />}</div> */}
       </div>
       <br />
       <div className="follow-list">
@@ -58,7 +60,7 @@ function SideBar() {
         <Link to="/team-member">
           <Button>Credits</Button>
         </Link>
-        
+
         {/* sign out */}
         <AlertDialog />
       </div>
