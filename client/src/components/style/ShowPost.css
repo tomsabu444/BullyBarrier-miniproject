@@ -2,7 +2,7 @@
     overflow-y: auto;
     border-radius: 10px;
     position: sticky;
-    max-height: calc(100vh - 300px); /* Adjust the value according to your design */
+    max-height: calc(100vh - 290px); /* Adjust the value according to your design */
 }
 
 .users-posts {
