@@ -2,10 +2,11 @@
     overflow-y: auto;
     border-radius: 10px;
     position: sticky;
-    max-height: calc(100vh - 180px); /* Adjust the value according to your design */
+    max-height: calc(100vh - 300px); /* Adjust the value according to your design */
 }
 
 .users-posts {
+    
     background-color: var(--color-primary);
     padding: 20px 30px 0px 30px;
     height: max-content;    
