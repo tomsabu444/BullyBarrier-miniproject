@@ -5,6 +5,7 @@ import {
   useClerk,
   UserButton,
   UserProfile,
+  RedirectToUserProfile,
 } from "@clerk/clerk-react";
 
 //
@@ -27,44 +28,47 @@ function SideBar() {
   };
 
   return (
-    <div className="sidebar">
-      <div className="sidebar-info">
-        <div className="avatar-box">
-          <img draggable="false" src={user.imageUrl} alt="user-image" />
-        </div>
-        <div className="profile-name">
-          <h2>{handleFullName()}</h2>
-          <p>@{user.username}</p>
-        </div>
-        {/* 
+    <>
+      <div className="sidebar">
+        <div className="sidebar-info">
+          <div className="avatar-box">
+            <img draggable="false" src={user.imageUrl} alt="user-image" />
+          </div>
+          <div className="profile-name">
+            <h2>{handleFullName()}</h2>
+            <p>@{user.username}</p>
+          </div>
+          {/* 
         //!  show profile button 
         */}
-        <div className="account-icon" onClick={handleClick}>
-          <ManageAccountsSharpIcon />
+          <div className="account-icon" onClick={handleClick}>
+            <ManageAccountsSharpIcon />
+          </div>
+        </div>
+        <br />
+        <div className="follow-list">
+          <h4>followers 0</h4>
+          <h4>following 0</h4>
+        </div>
+        <br />
+        <hr />
+        <br />
+
+        <div className="nav-list">
+          <Button>Profile</Button>
+
+          <Button>Friend Request</Button>
+
+          <Link to="/team-member">
+            <Button>Credits</Button>
+          </Link>
+
+          {/* sign out */}
+          <AlertDialog />
         </div>
       </div>
-      <br />
-      <div className="follow-list">
-        <h4>followers 0</h4>
-        <h4>following 0</h4>
-      </div>
-      <br />
-      <hr />
-      <br />
-
-      <div className="nav-list">
-        <Button>Profile</Button>
-
-        <Button>Friend Request</Button>
-
-        <Link to="/team-member">
-          <Button>Credits</Button>
-        </Link>
-
-        {/* sign out */}
-        <AlertDialog />
-      </div>
-    </div>
+      <div className="popup-profile">{showProfile && <UserProfile className="profile"/> }</div>
+    </>
   );
 }
 

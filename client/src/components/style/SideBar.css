@@ -53,3 +53,21 @@
     justify-content: center;
     flex-direction: column;
 }
+
+
+/* ! Popup Profile */
+
+/* .sidebar styles remain unchanged */
+
+.popup-profile {
+    width: max-content;
+    height: 70vh;
+    position: absolute;
+    overflow-y: auto;
+    z-index: 20;
+}
+
+.profile{
+    
+}
+
