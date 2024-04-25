@@ -10,6 +10,7 @@ import {
 
 //
 import ManageAccountsSharpIcon from "@mui/icons-material/ManageAccountsSharp";
+import CancelIcon from '@mui/icons-material/Cancel';
 import { Button } from "@mui/material";
 import AlertDialog from "./AlertDialogDemo";
 import { Link } from "react-router-dom";
@@ -55,7 +56,7 @@ function SideBar() {
         <br />
 
         <div className="nav-list">
-          <Button>Profile</Button>
+          <Button onClick={handleClick}>Profile</Button>
 
           <Button>Friend Request</Button>
 
@@ -67,7 +68,18 @@ function SideBar() {
           <AlertDialog />
         </div>
       </div>
-      <div className="popup-profile">{showProfile && <UserProfile className="profile"/> }</div>
+     {/* show Popup profile */}
+      {showProfile && (
+        <div className="popup-profile">
+            {/* Close icon */}
+            <div className="close-icon" onClick={handleClick}>
+            <CancelIcon />
+          </div>
+          <div className="profile">
+            <UserProfile />
+          </div>
+        </div>
+      )}
     </>
   );
 }

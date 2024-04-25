@@ -23,7 +23,7 @@
     width: 50px;
     border-radius: 60px;
     object-fit: cover;
-    aspect-ratio:  1 / 1;
+    aspect-ratio: 1 / 1;
 }
 
 .profile-name {
@@ -60,14 +60,32 @@
 /* .sidebar styles remain unchanged */
 
 .popup-profile {
-    width: max-content;
-    height: 70vh;
-    position: absolute;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(3, 3, 3, 0.61);
+    padding: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-profile .close-icon {
+    color: var(--color-blue);
+    cursor: pointer;
+  }
+
+  .close-icon svg {
+    font-size: 35px; /* Adjust the size as needed */
+  }
+
+.profile {
+    height: 80vh;
     overflow-y: auto;
-    z-index: 20;
+    border-radius: 20px;
 }
 
-.profile{
-    
+.profile .cl-navbar,
+.profile .cl-navbarMobileMenuButton {
+    display: none;
 }
-
