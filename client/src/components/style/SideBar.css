@@ -57,8 +57,6 @@
 
 /* ! Popup Profile */
 
-/* .sidebar styles remain unchanged */
-
 .popup-profile {
     position: fixed;
     top: 50%;
@@ -73,11 +71,11 @@
 .popup-profile .close-icon {
     color: var(--color-blue);
     cursor: pointer;
-  }
+}
 
-  .close-icon svg {
-    font-size: 35px; /* Adjust the size as needed */
-  }
+.close-icon svg {
+    font-size: 35px;
+}
 
 .profile {
     height: 80vh;
