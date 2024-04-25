@@ -23,7 +23,7 @@
     width: 50px;
     border-radius: 60px;
     object-fit: cover;
-    aspect-ratio:  1 / 1;
+    aspect-ratio: 1 / 1;
 }
 
 .profile-name {
@@ -52,4 +52,38 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+
+/* ! Popup Profile */
+
+.popup-profile {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(3, 3, 3, 0.61);
+    padding: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-profile .close-icon {
+    color: var(--color-blue);
+    cursor: pointer;
+}
+
+.close-icon svg {
+    font-size: 35px;
+}
+
+.profile {
+    height: 80vh;
+    overflow-y: auto;
+    border-radius: 20px;
+}
+
+.profile .cl-navbar,
+.profile .cl-navbarMobileMenuButton {
+    display: none;
 }
