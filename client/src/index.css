@@ -22,17 +22,21 @@
 }
 
 
-/* navbar clerk component */
+/*! navbar clerk component */
 
-.cl-userButtonAvatarBox{
-
+.cl-userButtonAvatarBox {
   height: 45px;
   width: 45px;
+}
+
+/* ! Clerk Manage Account Google FullName Color */
+.cl-internal-1ho4xv {
+  color: var(--color-ascent1);
 }
 
 
 /* Scroll*/
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }

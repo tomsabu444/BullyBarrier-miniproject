@@ -87,3 +87,8 @@
 .profile .cl-navbarMobileMenuButton {
     display: none;
 }
+
+.profile .cl-profilePage  h1 {
+    font-size: 35px;
+}
+
