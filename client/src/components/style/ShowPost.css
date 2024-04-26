@@ -2,14 +2,18 @@
     overflow-y: auto;
     border-radius: 10px;
     position: sticky;
-    max-height: calc(100vh - 290px); /* Adjust the value according to your design */
+    max-height: calc(100vh - 290px);
+    /* Adjust the value according to your design */
 }
 
+.feed-hr-end{
+    padding-bottom: 10px;
+}
 .users-posts {
-    
+
     background-color: var(--color-primary);
-    padding: 20px 30px 0px 30px;
-    height: max-content;    
+    padding: 10px 30px 0px 30px;
+    height: max-content;
 }
 
 .users-info {
@@ -41,8 +45,20 @@
     flex-wrap: wrap;
 }
 
-.users-names h4{
- font-weight: 600;
+.posted-user {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Ensure it takes full width */
+    align-items: center;
+}
+
+.posted-user span {
+    margin-left: 20px;
+    font-size: small;
+    color: var(--color-ascent2);
+}
+.users-names h4 {
+    font-weight: 600;
 }
 
 .comment-box {
