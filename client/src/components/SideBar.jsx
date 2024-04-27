@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import "./style/SideBar.css";
-import {
-  useClerk,
-  UserProfile,
-} from "@clerk/clerk-react";
+import { useClerk, UserProfile } from "@clerk/clerk-react";
 
 //
 import ManageAccountsSharpIcon from "@mui/icons-material/ManageAccountsSharp";
-import CancelIcon from '@mui/icons-material/Cancel';
+import CancelIcon from "@mui/icons-material/Cancel";
 import { Button } from "@mui/material";
 import AlertDialog from "./AlertDialogDemo";
 import { Link } from "react-router-dom";
@@ -48,7 +45,6 @@ function SideBar() {
           <h4>followers 0</h4>
           <h4>following 0</h4>
         </div>
-        <br />
         <hr />
         <br />
 
@@ -65,11 +61,11 @@ function SideBar() {
           <AlertDialog />
         </div>
       </div>
-     {/* show Popup profile */}
+      {/* show Popup profile */}
       {showProfile && (
         <div className="popup-profile">
-            {/* Close icon */}
-            <div className="close-icon" onClick={handleClick}>
+          {/* Close icon */}
+          <div className="close-icon" onClick={handleClick}>
             <CancelIcon />
           </div>
           <div className="profile">
