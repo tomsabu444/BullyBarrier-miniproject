@@ -69,6 +69,15 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    color: rgb(44, 252, 2);
+    /* color: rgb(44, 252, 2); */
     margin: 20px;
+}
+
+.comment-box p {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+
+
+
 }
