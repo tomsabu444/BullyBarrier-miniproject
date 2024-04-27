@@ -9,6 +9,10 @@
 .feed-hr-end{
     padding-bottom: 10px;
 }
+
+.feed-hr-end hr{
+    opacity: .5;
+}
 .users-posts {
 
     background-color: var(--color-primary);
@@ -58,6 +62,7 @@
     color: var(--color-ascent2);
 }
 .users-names h4 {
+    padding-left: 10px;
     font-weight: 600;
 }
 
@@ -65,6 +70,15 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    color: rgb(44, 252, 2);
+    /* color: rgb(44, 252, 2); */
     margin: 20px;
+}
+
+.comment-box p {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+
+
+
 }

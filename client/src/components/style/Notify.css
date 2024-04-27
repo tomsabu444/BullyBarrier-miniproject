@@ -23,10 +23,18 @@
     font-size: 24px;
     padding-bottom: 10px;
     text-wrap: wrap;
-    font-weight: 400;
 }
 
 .Nofity-icon{
     color: var(--color-blue);
     padding-bottom: 10px;
+}
+
+.notification{
+    max-height: calc(80vh - 300px);
+    overflow-y: auto;
+}
+
+.notification hr {
+    opacity: .5;
 }

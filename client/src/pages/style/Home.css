@@ -1,13 +1,10 @@
-body{
-    background-color: #48545a;
+body {
+  background-color: #48545a;
 }
 
-hr {
-    opacity: .5;
-  }
-
-  .content{
-    position: fixed;
-    display: flex;
-    justify-content: center;
+.content {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
