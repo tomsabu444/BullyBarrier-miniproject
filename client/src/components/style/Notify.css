@@ -30,3 +30,12 @@
     color: var(--color-blue);
     padding-bottom: 10px;
 }
+
+.notification{
+    max-height: calc(80vh - 300px);
+    overflow-y: auto;
+}
+
+.notification hr {
+    opacity: .5;
+}

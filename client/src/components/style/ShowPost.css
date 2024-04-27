@@ -9,6 +9,10 @@
 .feed-hr-end{
     padding-bottom: 10px;
 }
+
+.feed-hr-end hr{
+    opacity: .5;
+}
 .users-posts {
 
     background-color: var(--color-primary);

@@ -17,9 +17,11 @@ function Notify() {
       <hr />
 
       <div className="notification">
-        <Box sx={{ p: 2 }}>
-          <h3>content</h3>
+        <Box sx={{ p: 1 }}>
+          <p>Warning: Your recent message "message" contains bullying content</p>
         </Box>
+        <hr />
+        
       </div>
     </div>
   );
