@@ -62,6 +62,7 @@
     color: var(--color-ascent2);
 }
 .users-names h4 {
+    padding-left: 10px;
     font-weight: 600;
 }
 

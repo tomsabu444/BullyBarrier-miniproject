@@ -23,8 +23,8 @@ function ShowPost() {
             </div>
             <div className="posted-user">
               <div className="users-names">
-                <h4>tom sabu </h4>
-                <p>tomsabu444 </p>
+                <h4>TOM SABU</h4>
+                <p>@tomsabu444 </p>
               </div>
               <span>{post.time}</span>
             </div>
