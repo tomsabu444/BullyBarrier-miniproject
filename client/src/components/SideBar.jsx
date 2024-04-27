@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "./style/SideBar.css";
 import {
-  SignOutButton,
   useClerk,
-  UserButton,
   UserProfile,
-  RedirectToUserProfile,
 } from "@clerk/clerk-react";
 
 //
