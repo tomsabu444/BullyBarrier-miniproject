@@ -20,6 +20,7 @@ function Post() {
             <img draggable="false" src={user.imageUrl} alt="user-image" />
           </div>
           <TextareaAutosize
+            id="inputpost"
             placeholder="What's happening?!"
             value={inputValue}
             onChange={handleChange}
@@ -31,8 +32,8 @@ function Post() {
           <Button>Post</Button>
         </div>
       </div>
-      
-      <div  className="show-post">
+
+      <div className="show-post">
         <ShowPost />
       </div>
     </div>
