@@ -36,6 +36,9 @@
     flex-direction: row;
 }
 
+.social-links svg {
+    color: var(--color-blue);
+}
 
 .team-member-avatar {
     display: flex;
