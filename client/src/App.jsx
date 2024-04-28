@@ -7,6 +7,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import Sign_In from "./pages/Sign_In";
 import Sign_Up from "./pages/Sign_Up";
 import Home from "./pages/Home";
+import Team from "./pages/Credits";
 
 
 
@@ -16,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/sign-in" element={<Sign_In />} />
         <Route path="/sign-up" element={<Sign_Up />} />
-
+        <Route path="/team-member" element={<Team />} />
 
         {/* Protected Routes */}
         <Route
