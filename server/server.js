@@ -12,6 +12,10 @@ const port = process.env.PORT;
 app.use(cros());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('<h1>Bully Barriers || Miniproject S6 </h1>');
+});
+
 app.listen(port, () =>
   console.log(`Server is running on port  http://localhost:${port}`)
 );
