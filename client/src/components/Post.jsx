@@ -4,6 +4,7 @@ import { useClerk } from "@clerk/clerk-react";
 import { Button, TextareaAutosize } from "@mui/material";
 import ShowPost from "./ShowPost";
 import Axios from "axios";
+import { toast } from 'react-toastify';
 
 function Post() {
   const { user } = useClerk();
@@ -15,21 +16,50 @@ function Post() {
 
   const handleSubmit = async () => {
     try {
+      if (!inputValue) {
+        // If input value is missing, show alert notification
+        toast.error("Please enter something before posting");
+        return;
+      }
+
       const postData = {
         clerkUserId: user.id,
-        username: user.fullName,
+        username: user.username,
         email: user.emailAddresses[0].emailAddress,
         image: user.imageUrl,
         content: inputValue,
       };
 
-      // Send the post data to your backend
-      await Axios.post("http://localhost:5273/api/content-analyse", postData);
+      //* Show promise notification
+      const promise = Axios.post("http://localhost:5273/api/content-analyse", postData);
 
-      // Clear the input value after posting
+      //* Show promise notification until request is resolved
+      toast.promise(
+        promise,
+        {
+          pending: 'Sending comment...',
+          success: 'Comment sent successfully',
+          error: 'Failed to send comment 🤯'
+        }
+      );
+
+      // //* Wait for the request to complete
+      // const response = await promise;
+
+      //* Clear the input value after posting
       setInputValue("");
+
+      // //* Check if the request was successful
+      // if (response.status === 200) {
+      //   //* Show success alert notification
+      //   toast.success("Comment sent successfully");
+      // } else {
+      //   toast.error("Failed to save comment. Please try again later.");
+      // }
     } catch (error) {
       console.error("Error posting data:", error);
+      // Show error alert notification
+      toast.error("An error occurred. Please try again later.");
     }
   };
 
