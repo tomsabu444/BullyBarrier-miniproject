@@ -1,7 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useClerk } from "@clerk/clerk-react";
 import Axios from "axios";
 import "./style/ShowPost.css";
+
+//* Function to convert timestamp to time ago format
+function timeAgo(timestamp) {
+  const now = new Date();
+  const diff = Math.round((now - new Date(timestamp)) / 1000);
+
+  const intervals = {
+    year: 31536000,
+    month: 2592000,
+    week: 604800,
+    day: 86400,
+    hour: 3600,
+    minute: 60,
+  };
+
+  for (const [unit, seconds] of Object.entries(intervals)) {
+    const interval = Math.floor(diff / seconds);
+    if (interval >= 1) {
+      return interval === 1 ? `1 ${unit} ago` : `${interval} ${unit}s ago`;
+    }
+  }
+
+  return "just now";
+}
 
 function ShowPost() {
   const [comments, setComments] = useState([]);
@@ -33,7 +56,7 @@ function ShowPost() {
                 <h4>{comment.username}</h4>
                 <p>@{comment.username} </p>
               </div>
-              <span>{comment.createdAt}</span> {/* Assuming createdAt is in a suitable format */}
+              <span>{timeAgo(comment.createdAt)}</span> {/* Display time ago format */}
             </div>
           </div>
           <div className="comment-box" > {/* Adjust color as needed */}
