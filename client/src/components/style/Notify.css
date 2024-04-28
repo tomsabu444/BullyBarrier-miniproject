@@ -1,0 +1,40 @@
+.notify {
+    position: sticky;
+    top: 20px;
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    margin: 20px;
+    width: clamp(250px, 350px, 50%);
+    height: max-content;
+    color: var(--color-ascent1);
+    padding: 10px 20px 10px 20px
+    
+}
+
+
+.notify .nofity-title{
+    display: flex;
+    align-items: center;
+    justify-content: center   ;
+    gap: 10px;
+}
+
+.notify .nofity-title h1 {
+    font-size: 24px;
+    padding-bottom: 10px;
+    text-wrap: wrap;
+}
+
+.Nofity-icon{
+    color: var(--color-blue);
+    padding-bottom: 10px;
+}
+
+.notification{
+    max-height: calc(80vh - 300px);
+    overflow-y: auto;
+}
+
+.notification hr {
+    opacity: .5;
+}

@@ -1,0 +1,84 @@
+.feed {
+    overflow-y: auto;
+    border-radius: 10px;
+    position: sticky;
+    max-height: calc(100vh - 290px);
+    /* Adjust the value according to your design */
+}
+
+.feed-hr-end{
+    padding-bottom: 10px;
+}
+
+.feed-hr-end hr{
+    opacity: .5;
+}
+.users-posts {
+
+    background-color: var(--color-primary);
+    padding: 10px 30px 0px 30px;
+    height: max-content;
+}
+
+.users-info {
+    display: flex;
+}
+
+.users-img-box {
+    display: flex;
+    align-self: center;
+}
+
+
+.users-img-box img {
+    width: 45px;
+    border-radius: 60px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+.users-names {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15px;
+    color: var(--color-ascent1);
+    font-size: 15px;
+    font-weight: 300;
+    flex-wrap: wrap;
+}
+
+.posted-user {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Ensure it takes full width */
+    align-items: center;
+}
+
+.posted-user span {
+    margin-left: 20px;
+    font-size: small;
+    color: var(--color-ascent2);
+}
+.users-names h4 {
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+.comment-box {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* color: rgb(44, 252, 2); */
+    margin: 20px;
+}
+
+.comment-box p {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+
+
+
+}

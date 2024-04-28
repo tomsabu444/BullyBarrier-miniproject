@@ -1,3 +1,7 @@
+body{
+    background-color: #48545a;
+}
+
 .container {
     display: flex;
     justify-content: center;

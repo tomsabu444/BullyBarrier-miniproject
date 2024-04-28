@@ -1,0 +1,100 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+
+.topbar {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.75rem 1rem;
+    background-color: var(--color-primary);
+    border-radius: 0px 0px 10px 10px;
+
+}
+
+.topbar .title-box {
+    display: flex;
+    padding-left: 20px;
+}
+
+.title-box .title-logo{
+    width: 45px;
+    height:  auto;
+    object-fit: contain;
+}
+
+.title-name{
+    padding-left: 10px;
+    font-size: 1.25rem;
+    font-size: 1.5rem;
+    color: #0066ff;
+    font-weight: 600;
+    
+}
+
+.nav_searchbaar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+    padding-bottom: 2px;
+}
+
+.nav_searchbaar input {
+    width: 300px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.nav_searchbaar .search_icon {
+    background-color: #0066ff;
+    height: 38px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    cursor: pointer;
+}
+
+.profile-box {
+    display: flex;
+    align-items: center;
+    color: #0066ff;
+
+}
+
+.profile-box h2 {
+    display: block;
+    max-width: 350px;
+    padding-right: 30px;
+    word-wrap: break-word;
+    overflow: hidden;
+
+}
+
+.user_button {
+    padding-right: 50px;
+}
+
+
+@media (max-width: 768px) {
+    .topbar {
+        width: 100%;
+    }
+
+    .nav_searchbaar{
+        display: none;
+    }
+    .profile-box h2{
+        display: none;
+    }
+}

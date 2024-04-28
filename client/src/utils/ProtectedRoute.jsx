@@ -13,7 +13,7 @@ function ProtectedRoute({ children }) {
           children // Render children if user is signed in
         ) : (
           <Navigate to="/sign-in" replace /> // Redirect to sign-in if user is not signed in
-        )}{" "}
+        )}
       </ClerkLoaded>
     </>
   );
