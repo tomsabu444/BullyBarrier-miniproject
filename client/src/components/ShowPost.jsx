@@ -1,36 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useClerk } from "@clerk/clerk-react";
+import Axios from "axios";
 import "./style/ShowPost.css";
 
 function ShowPost() {
-  const { user } = useClerk();
+  const [comments, setComments] = useState([]);
 
-  // Sample array of posts with color
-  const posts = [
-    { id: 1, content: "Lorem ipsum dolor sit amet 1", time: "10 min ago", color: "rgb(44, 252, 2)" },
-    { id: 2, content: "Lorem ipsum dolor sit amet 2", time: "20 min ago", color: "rgb(255, 0, 0)" },
-    { id: 3, content: "Lorem ipsum dolor sit amet 3", time: "30 min ago", color: "rgb(255, 0, 0)" },
-    // Add more posts as needed
-  ];
+  useEffect(() => {
+    // Fetch comments data from the backend API
+    const fetchComments = async () => {
+      try {
+        const response = await Axios.get("http://localhost:5273/api/getcomments");
+        setComments(response.data.reverse());
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      }
+    };
+
+    fetchComments();
+  }, []);
 
   return (
     <div className="feed">
-      {posts.map((post) => (
-        <div key={post.id} className="users-posts">
+      {comments.map((comment) => (
+        <div key={comment._id} className="users-posts">
           <div className="users-info">
             <div className="users-img-box">
-              <img draggable="false" src={user.imageUrl} alt="user-image" />
+              <img draggable="false" src={comment.image} alt="user-image" />
             </div>
             <div className="posted-user">
               <div className="users-names">
-                <h4>TOM SABU</h4>
-                <p>@tomsabu444 </p>
+                <h4>{comment.username}</h4>
+                <p>@{comment.username} </p>
               </div>
-              <span>{post.time}</span>
+              <span>{comment.createdAt}</span> {/* Assuming createdAt is in a suitable format */}
             </div>
           </div>
-          <div className="comment-box" style={{ color: post.color }}>
-            <p>{post.content}</p>
+          <div className="comment-box" > {/* Adjust color as needed */}
+            <p>{comment.content}</p>
           </div>
           <div className="feed-hr-end">
             <hr />
