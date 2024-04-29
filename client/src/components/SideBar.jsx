@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style/SideBar.css";
 import { useClerk, UserProfile } from "@clerk/clerk-react";
 
@@ -27,6 +27,17 @@ function SideBar() {
   const handleCreditsClick = () => {
     setShowCredits(!showCredits);
   };
+
+  useEffect(() => {
+    // Automatically hide the Credits component after 20 seconds
+    const timer = setTimeout(() => {
+      setShowCredits(false);
+    }, 20000);
+
+    // Clear the timer on component unmount to avoid memory leaks
+    return () => clearTimeout(timer);
+  }, [showCredits]); // Run the effect whenever showCredits changes
+
 
   return (
     <>
