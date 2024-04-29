@@ -1,94 +1,95 @@
+.sidebar-content {
+  width: clamp(250px, 350px, 50%);
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  color: var(--color-ascent1);
+}
+
 .sidebar {
-    height: max-content;
-    width: clamp(250px, 350px, 50%);
-    position: sticky;
-    top: 20px;
-    padding: 20px;
-    margin: 20px;
-    color: var(--color-ascent1);
-    background-color: var(--color-primary);
-    border-radius: 10px;
+  height: max-content;
+  padding: 20px;
+  background-color: var(--color-primary);
+  border-radius: 10px;
 }
 
 .sidebar-info {
-    display: flex;
+  display: flex;
 }
 
 .avatar-box {
-    display: flex;
-    align-self: center;
+  display: flex;
+  align-self: center;
 }
 
 .avatar-box img {
-    width: 50px;
-    border-radius: 60px;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
+  width: 50px;
+  border-radius: 60px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
 .profile-name {
-    width: 200px;
-    font-size: 16px;
-    padding-left: 15px;
+  width: 200px;
+  font-size: 16px;
+  padding-left: 15px;
 }
 
 .account-icon {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    color: var(--color-blue);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-blue);
 }
 
 .follow-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 30px 10px 10px;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px 10px 10px;
+  gap: 20px;
 }
 
 .nav-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
 
 /* ! Popup Profile */
 
 .popup-profile {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    background-color: rgba(3, 3, 3, 0.61);
-    padding: 100%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: rgba(3, 3, 3, 0.61);
+  padding: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .popup-profile .close-icon {
-    color: var(--color-blue);
-    cursor: pointer;
+  color: var(--color-blue);
+  cursor: pointer;
 }
 
 .close-icon svg {
-    font-size: 35px;
+  font-size: 35px;
 }
 
 .profile {
-    height: 80vh;
-    overflow-y: auto;
-    border-radius: 20px;
+  height: 80vh;
+  overflow-y: auto;
+  border-radius: 20px;
 }
 
 .profile .cl-navbar,
 .profile .cl-navbarMobileMenuButton {
-    display: none;
+  display: none;
 }
 
-.profile .cl-profilePage  h1 {
-    font-size: 35px;
+.profile .cl-profilePage h1 {
+  font-size: 35px;
 }
-
