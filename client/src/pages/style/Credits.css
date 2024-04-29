@@ -20,6 +20,9 @@
     /* animation-direction: alternate-reverse; */
 }
 
+.team-member-container:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+  }
   
 
 .team-member {
