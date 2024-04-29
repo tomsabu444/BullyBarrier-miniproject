@@ -4,6 +4,8 @@
   flex-direction: column;
   margin: 20px;
   color: var(--color-ascent1);
+  /* overflow-y: auto;
+  max-height: calc(100vh - 130px); */
 }
 
 .sidebar {

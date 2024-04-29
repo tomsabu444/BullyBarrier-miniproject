@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style/Credits.css";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -44,26 +44,44 @@ const teamMembers = [
 ];
 
 function Credits() {
+  const [duplicatedTeamMembers, setDuplicatedTeamMembers] = useState([]);
+
+  useEffect(() => {
+    // Function to append the teamMembers array to itself infinitely
+    const appendTeamMembers = () => {
+      setDuplicatedTeamMembers((prevMembers) => [...prevMembers, ...teamMembers]);
+    };
+
+    // Call the function initially and then repeat it every time the teamMembers array changes
+    appendTeamMembers();
+    const interval = setInterval(appendTeamMembers, 50 * 1000); // Repeat every 20 seconds
+
+    // Clear the interval when the component unmounts to prevent memory leaks
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="team-section">
-      {teamMembers.map((member, index) => (
-        <article key={index} className="team-member">
-          <div className="team-member-avatar">
-            <img src={member.avatar} alt={member.name} />
-          </div>
-          <div className="team-member-name">
-            <h3>{member.name}</h3>
-            <p>{member.role}</p>
-          </div>
-          <div className="social-links">
-            {member.social.map((item, idx) => (
-              <a key={idx} href={item.link}>
-                {item.icon}
-              </a>
-            ))}
-          </div>
-        </article>
-      ))}
+      <div className="team-member-container">
+        {duplicatedTeamMembers.map((member, index) => (
+          <article key={index} className="team-member">
+            <div className="team-member-avatar">
+              <img src={member.avatar} alt={member.name} />
+            </div>
+            <div className="team-member-name">
+              <h3>{member.name}</h3>
+              <p>{member.role}</p>
+            </div>
+            <div className="social-links">
+              {member.social.map((item, idx) => (
+                <a key={idx} href={item.link}>
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }

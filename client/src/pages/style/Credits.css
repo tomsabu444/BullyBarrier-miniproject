@@ -1,12 +1,26 @@
 .team-section {
-  width: 100%;
-  padding: 10px 10px 0px;
-  margin-top: 10px;
-  background-color: var(--color-primary);
-  border-radius: 10px;
-  overflow-y: auto;
-  max-height: calc(100vh - 470px);
+    width: 100%;
+    padding: 10px 10px 0px;
+    margin-top: 10px;
+    /* background-color: var(--color-primary); */
+    border-radius: 10px;
+    overflow: hidden; /* Hide overflow to create scroll effect */
+  }
+  
+  /* Keyframes for continuous scrolling */
+  @keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(calc(-100% - 16px)); } /* Adjust according to your design */
+  }
+  
+  .team-member-container {
+    display: flex;
+    flex-direction: column;
+    animation: scroll 100s linear infinite; /* Adjust duration and timing function as needed */
+    /* animation-direction: alternate-reverse; */
 }
+
+  
 
 .team-member {
   position: relative;
