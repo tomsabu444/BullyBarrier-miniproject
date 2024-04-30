@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style/Post.css";
 import { useClerk } from "@clerk/clerk-react";
 import { Button, TextareaAutosize } from "@mui/material";
@@ -8,11 +8,21 @@ import { toast } from 'react-toastify';
 
 function Post() {
   const { user } = useClerk();
-  const [inputValue, setInputValue] = useState("");
-
+  const [inputValue, setInputValue] = useState(""); //? Post Input
+  
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
+ 
+  const [refreshShowPost, setRefreshShowPost] = useState(false); //! To Refresh The ShowPost Component if post is successfull
+
+  useEffect(() => {
+    if (refreshShowPost) {
+      // If refreshShowPost state changes, trigger refresh of ShowPost component
+      setRefreshShowPost(false); // Reset refresh state
+    }
+  }, [refreshShowPost]);
+
 
   const handleSubmit = async () => {
     try {
@@ -43,19 +53,20 @@ function Post() {
         }
       );
 
-      // //* Wait for the request to complete
-      // const response = await promise;
+      //? Wait for the request to complete
+      const response = await promise;
 
       //* Clear the input value after posting
       setInputValue("");
 
       // //* Check if the request was successful
-      // if (response.status === 200) {
+      if (response.status === 200) {
+        setRefreshShowPost(true); //!  Refresh the posts in order to see new posted
       //   //* Show success alert notification
       //   toast.success("Comment sent successfully");
       // } else {
       //   toast.error("Failed to save comment. Please try again later.");
-      // }
+      }
     } catch (error) {
       console.error("Error posting data:", error);
       // Show error alert notification
@@ -85,7 +96,7 @@ function Post() {
       </div>
 
       <div className="show-post">
-        <ShowPost />
+        <ShowPost key={refreshShowPost} />
       </div>
     </div>
   );
