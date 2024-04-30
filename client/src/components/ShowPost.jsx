@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./style/ShowPost.css";
+import { useAuth } from "@clerk/clerk-react";
 
 //* Function to convert timestamp to time ago format
 function timeAgo(timestamp) {
@@ -29,11 +30,24 @@ function timeAgo(timestamp) {
 function ShowPost() {
   const [comments, setComments] = useState([]);
 
+  //! Api Auth
+  const { getToken } = useAuth();
+
   useEffect(() => {
     // Fetch comments data from the backend API
     const fetchComments = async () => {
       try {
-        const response = await Axios.get("http://localhost:5273/api/getcomments");
+        const token = await getToken();
+
+        const response = await Axios.get(
+          "http://localhost:5273/api/getcomments",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setComments(response.data.reverse());
       } catch (error) {
         console.error("Error fetching comments:", error);
@@ -56,10 +70,13 @@ function ShowPost() {
                 <h4>{comment.fullname}</h4>
                 <p>@{comment.username} </p>
               </div>
-              <span>{timeAgo(comment.createdAt)}</span> {/* Display time ago format */}
+              <span>{timeAgo(comment.createdAt)}</span>{" "}
+              {/* Display time ago format */}
             </div>
           </div>
-          <div className="comment-box" > {/* Adjust color as needed */}
+          <div className="comment-box">
+            {" "}
+            {/* Adjust color as needed */}
             <p>{comment.content}</p>
           </div>
           <div className="feed-hr-end">
