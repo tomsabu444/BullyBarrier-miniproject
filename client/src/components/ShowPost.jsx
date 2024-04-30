@@ -53,7 +53,7 @@ function ShowPost() {
             </div>
             <div className="posted-user">
               <div className="users-names">
-                <h4>{comment.username}</h4>
+                <h4>{comment.fullname}</h4>
                 <p>@{comment.username} </p>
               </div>
               <span>{timeAgo(comment.createdAt)}</span> {/* Display time ago format */}

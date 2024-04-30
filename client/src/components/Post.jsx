@@ -34,6 +34,7 @@ function Post() {
 
       const postData = {
         clerkUserId: user.id,
+        fullname: user.fullName.toUpperCase(),
         username: user.username,
         email: user.emailAddresses[0].emailAddress,
         image: user.imageUrl,
@@ -70,7 +71,7 @@ function Post() {
     } catch (error) {
       console.error("Error posting data:", error);
       // Show error alert notification
-      toast.error("An error occurred. Please try again later.");
+      // toast.error("An error occurred. Please try again later.");
     }
   };
 
