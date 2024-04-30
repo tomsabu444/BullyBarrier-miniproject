@@ -1,9 +1,10 @@
 .team-section {
     width: 100%;
-    padding: 10px 10px 0px;
+    padding: 10px 0px 0px;
     margin-top: 10px;
     /* background-color: var(--color-primary); */
     border-radius: 10px;
+    height: 300px;
     overflow: hidden; /* Hide overflow to create scroll effect */
   }
   
@@ -16,7 +17,7 @@
   .team-member-container {
     display: flex;
     flex-direction: column;
-    animation: scroll 20s linear infinite; /* Adjust duration and timing function as needed */
+    animation: scroll 30s linear infinite; /* Adjust duration and timing function as needed */
   }
   
   .team-member-container:hover {

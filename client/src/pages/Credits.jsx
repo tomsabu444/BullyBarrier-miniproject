@@ -72,7 +72,7 @@ function Credits() {
 
     // Call the function initially and then repeat it every time the teamMembers array changes
     appendTeamMembers();
-    const interval = setInterval(appendTeamMembers, 20 * 1000); // Repeat every 20 seconds
+    const interval = setInterval(appendTeamMembers, 30 * 1000); // Repeat every 20 seconds
 
     // Clear the interval when the component unmounts to prevent memory leaks
     return () => clearInterval(interval);
