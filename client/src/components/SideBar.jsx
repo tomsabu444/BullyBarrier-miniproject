@@ -32,7 +32,7 @@ function SideBar() {
     // Automatically hide the Credits component after 20 seconds
     const timer = setTimeout(() => {
       setShowCredits(false);
-    }, 20000);
+    }, 30000); //20 Second
 
     // Clear the timer on component unmount to avoid memory leaks
     return () => clearTimeout(timer);
