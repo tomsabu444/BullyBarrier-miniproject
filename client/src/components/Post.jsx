@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./style/Post.css";
-import { useClerk } from "@clerk/clerk-react";
+import { useAuth, useClerk } from "@clerk/clerk-react";
 import { Button, TextareaAutosize } from "@mui/material";
 import ShowPost from "./ShowPost";
 import Axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function Post() {
   const { user } = useClerk();
   const [inputValue, setInputValue] = useState(""); //? Post Input
-  
+
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
- 
+
   const [refreshShowPost, setRefreshShowPost] = useState(false); //! To Refresh The ShowPost Component if post is successfull
 
   useEffect(() => {
@@ -23,6 +23,8 @@ function Post() {
     }
   }, [refreshShowPost]);
 
+  //! Api Auth
+  const { getToken } = useAuth();
 
   const handleSubmit = async () => {
     try {
@@ -41,18 +43,25 @@ function Post() {
         content: inputValue,
       };
 
-      //* Show promise notification
-      const promise = Axios.post("http://localhost:5273/api/content-analyse", postData);
-
-      //* Show promise notification until request is resolved
-      toast.promise(
-        promise,
+      const token = await getToken();
+      //* Show promise notification and send data
+      const promise =  Axios.post(
+        "http://localhost:5273/api/content-analyse",
+        postData,
         {
-          pending: 'Sending comment...',
-          success: 'Comment sent successfully',
-          error: 'Failed to send comment 🤯'
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
+
+      //* Show promise notification until request is resolved
+      toast.promise(promise, {
+        pending: "Sending comment...",
+        success: "Comment sent successfully",
+        error: "Failed to send comment 🤯",
+      });
 
       //? Wait for the request to complete
       const response = await promise;
@@ -63,10 +72,10 @@ function Post() {
       // //* Check if the request was successful
       if (response.status === 200) {
         setRefreshShowPost(true); //!  Refresh the posts in order to see new posted
-      //   //* Show success alert notification
-      //   toast.success("Comment sent successfully");
-      // } else {
-      //   toast.error("Failed to save comment. Please try again later.");
+        //   //* Show success alert notification
+        //   toast.success("Comment sent successfully");
+        // } else {
+        //   toast.error("Failed to save comment. Please try again later.");
       }
     } catch (error) {
       console.error("Error posting data:", error);

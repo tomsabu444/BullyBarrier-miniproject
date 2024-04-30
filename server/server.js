@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cros = require("cors");
 require("dotenv").config();
 
+const { ClerkExpressRequireAuth } = require("@clerk/clerk-sdk-node")
+
 const analyseComment = require("./component/analyse_Comment");
 const getcomments = require("./component/Show_Post");
 
@@ -19,6 +21,17 @@ app.get('/', (req, res) => {
 app.listen(port, () =>
   console.log(`Server is running on port  http://localhost:${port}`)
 );
+
+//? Api Auth
+// Use the strict middleware that raises an error when unauthenticated
+app.use('/api', ClerkExpressRequireAuth(), (req, res, next) => {
+  next();
+})
+
+app.use((err, req, res, next) => {
+  // console.error(err.stack)
+  res.status(401).send('Unauthenticated!')
+})
 
 //! comment moderation
 app.use("/api", analyseComment);
