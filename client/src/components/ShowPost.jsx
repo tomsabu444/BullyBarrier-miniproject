@@ -74,8 +74,7 @@ function ShowPost() {
               {/* Display time ago format */}
             </div>
           </div>
-          <div className="comment-box">
-            {" "}
+          <div className={comment.flagged ? "comment-box flagged" : "comment-box"}>
             {/* Adjust color as needed */}
             <p>{comment.content}</p>
           </div>

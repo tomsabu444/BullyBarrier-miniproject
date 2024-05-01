@@ -70,9 +70,17 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    padding-left: 20px;
+    background-color: rgba(37, 131, 37, 0.322);
     color: rgb(44, 252, 2);
     margin: 20px;
 }
+
+.comment-box.flagged  {
+    background-color: rgba(163, 46, 31, 0.322);
+    color: rgb(252, 2, 2);
+}
+
 
 .comment-box p {
     width: 100%;
