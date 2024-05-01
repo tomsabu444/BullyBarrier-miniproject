@@ -62,8 +62,14 @@
     color: var(--color-ascent2);
 }
 .users-names h4 {
-    padding-left: 10px;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.users-names h4 img {
+    margin-left: 10px;
+   width: 20px;
 }
 
 .comment-box {
