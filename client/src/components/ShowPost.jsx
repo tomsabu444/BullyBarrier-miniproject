@@ -3,6 +3,8 @@ import Axios from "axios";
 import "./style/ShowPost.css";
 import { useAuth } from "@clerk/clerk-react";
 
+import verified_image from "../assets/verified_image.gif";
+
 //* Function to convert timestamp to time ago format
 function timeAgo(timestamp) {
   const now = new Date();
@@ -63,18 +65,27 @@ function ShowPost() {
         <div key={comment._id} className="users-posts">
           <div className="users-info">
             <div className="users-img-box">
-              <img draggable="false" src={comment.image} alt="user-image" />
+              <img
+                draggable="false"
+                src={comment.user.image}
+                alt="user-image"
+              />
             </div>
             <div className="posted-user">
               <div className="users-names">
-                <h4>{comment.fullname}</h4>
-                <p>@{comment.username} </p>
+                <h4>
+                  {`${comment.user.firstname.toUpperCase()} ${comment.user.lastname.toUpperCase()}`}
+                  {/*//* <img src={verified_image} alt="verified_image" /> */}
+                </h4>
+                <p>@{comment.user.username} </p>
               </div>
-              <span>{timeAgo(comment.createdAt)}</span>{" "}
+              <span>{timeAgo(comment.createdAt)}</span>
               {/* Display time ago format */}
             </div>
           </div>
-          <div className={comment.flagged ? "comment-box flagged" : "comment-box"}>
+          <div
+            className={comment.flagged ? "comment-box flagged" : "comment-box"}
+          >
             {/* Adjust color as needed */}
             <p>{comment.content}</p>
           </div>
