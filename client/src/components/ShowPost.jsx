@@ -63,12 +63,12 @@ function ShowPost() {
         <div key={comment._id} className="users-posts">
           <div className="users-info">
             <div className="users-img-box">
-              <img draggable="false" src={comment.image} alt="user-image" />
+              <img draggable="false" src={comment.user.image} alt="user-image" />
             </div>
             <div className="posted-user">
               <div className="users-names">
-                <h4>{comment.fullname}</h4>
-                <p>@{comment.username} </p>
+                <h4>{`${comment.user.firstname.toUpperCase()} ${comment.user.lastname.toUpperCase()}`}</h4>
+                <p>@{comment.user.username} </p>
               </div>
               <span>{timeAgo(comment.createdAt)}</span>{" "}
               {/* Display time ago format */}

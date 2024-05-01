@@ -23,11 +23,11 @@ router.post("/content-analyse", async (req, res) => {
 
     const comment = new Comment({
       clerkUserId,
-      fullname,
+      // fullname,
       content,
-      username,
-      email,
-      image,
+      // username,
+      // email,
+      // image,
       categories: moderation.results[0].categories,
       flagged: moderation.results[0].flagged,
     });
