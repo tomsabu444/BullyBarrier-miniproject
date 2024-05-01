@@ -7,7 +7,7 @@ router.get("/getcomments", async (req, res) => {
     //* Fetch comments data from MongoDB
     const comments = await Comment.find(
       {},
-      { image: 1, username: 1, fullname: 1, content: 1, flagged: 1 }
+      { image: 1, username: 1, fullname: 1, content: 1, flagged: 1,createdAt:1 }
     );
     res.json(comments);
   } catch (error) {
