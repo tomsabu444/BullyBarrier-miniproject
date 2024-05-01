@@ -36,10 +36,10 @@ function Post() {
 
       const postData = {
         clerkUserId: user.id,
-        fullname: user.fullName.toUpperCase(),
-        username: user.username,
-        email: user.emailAddresses[0].emailAddress,
-        image: user.imageUrl,
+        // fullname: user.fullName.toUpperCase(),
+        // username: user.username,
+        // email: user.emailAddresses[0].emailAddress,
+        // image: user.imageUrl,
         content: inputValue,
       };
 
