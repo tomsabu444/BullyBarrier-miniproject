@@ -6,7 +6,7 @@ import ShowPost from "./ShowPost";
 import Axios from "axios";
 import { toast } from "react-toastify";
 
-function Post() {
+function Post({ refreshNotifications }) {
   const { user } = useClerk();
   const [inputValue, setInputValue] = useState(""); //? Post Input
 
@@ -20,6 +20,7 @@ function Post() {
     if (refreshShowPost) {
       // If refreshShowPost state changes, trigger refresh of ShowPost component
       setRefreshShowPost(false); // Reset refresh state
+      refreshNotifications(); //! If post is successful, trigger refresh of notifications
     }
   }, [refreshShowPost]);
 
@@ -45,7 +46,7 @@ function Post() {
 
       const token = await getToken();
       //* Show promise notification and send data
-      const promise =  Axios.post(
+      const promise = Axios.post(
         "http://localhost:5273/api/content-analyse",
         postData,
         {
@@ -72,6 +73,7 @@ function Post() {
       // //* Check if the request was successful
       if (response.status === 200) {
         setRefreshShowPost(true); //!  Refresh the posts in order to see new posted
+ 
         //   //* Show success alert notification
         //   toast.success("Comment sent successfully");
         // } else {

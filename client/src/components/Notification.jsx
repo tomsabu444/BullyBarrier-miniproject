@@ -1,38 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style/Notify.css";
 import { Badge, Box } from "@mui/material";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
+import Axios from "axios";
+import { useAuth, useClerk } from "@clerk/clerk-react";
 
 function Notify() {
-  //sample
-  const notifications = [
-    "Warning: Your recent message 'message' contains bullying content",
-  ];
+  const [flaggedComments, setFlaggedComments] = useState([]);
+  const { user } = useClerk();
+
+  //! Api Auth
+  const { getToken } = useAuth();
+
+  useEffect(() => {
+    // Fetch flagged comments for the current user
+    const fetchFlaggedComments = async () => {
+      try {
+        const clerkUserId = user.id;
+
+        const token = await getToken();
+        const response = await Axios.get(
+          `http://localhost:5273/api/flaggedpost/${clerkUserId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setFlaggedComments(response.data);
+      } catch (error) {
+        console.error("Error fetching flagged comments:", error);
+      }
+    };
+
+    fetchFlaggedComments();
+  }, []);
 
   return (
     <div className="notify">
       <div className="nofity-title">
         <h1>Notification</h1>
         <div className="Nofity-icon">
-          {/* 
-          //! notification count  
-          */}
-          <Badge badgeContent={notifications.length} color="warning">
-            <NotificationsIcon color="blue" />
+          <Badge badgeContent={flaggedComments.length} color="warning">
+            <NotificationImportantIcon color="blue" />
           </Badge>
         </div>
       </div>
       <hr />
 
-      {/* Map through the notifications array and render each notification */}
-      {notifications.map((notification, index) => (
-        <div key={index} className="notification">
-          <Box sx={{ p: 1 }}>
-            <p>{notification}</p>
-          </Box>
-          <hr />
-        </div>
-      ))}
+      {/* Render notifications if available, otherwise show a message */}
+      { flaggedComments.length > 0 ? (
+        flaggedComments.map((comment, index) => (
+          <div key={index} className="notification">
+            <Box sx={{ p: 1 }}>
+              <p>
+                <strong> Warning ⛔: </strong> Your recent message
+                <span> "{comment}"</span> contains bullying content 😟.
+              </p>
+            </Box>
+            <hr />
+          </div>
+        ))
+      ) : (
+        <Box sx={{ p: 1 }}>
+        <p>
+        No warnings to show 😀! Keep up the good work!
+        </p>
+      </Box>
+      )}
     </div>
   );
 }
