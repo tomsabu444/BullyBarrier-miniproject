@@ -7,7 +7,6 @@ import { useAuth, useClerk } from "@clerk/clerk-react";
 
 function Notify() {
   const [flaggedComments, setFlaggedComments] = useState([]);
-
   const { user } = useClerk();
 
   //! Api Auth
@@ -50,18 +49,26 @@ function Notify() {
       </div>
       <hr />
 
-      {/* Map through the flagged comments array and render each notification */}
-      {flaggedComments.map((comment, index) => (
-        <div key={index} className="notification">
-          <Box sx={{ p: 1 }}>
-            <p>
-              <strong> Warning ⛔: </strong> Your recent message
-              <span> "{comment}"</span> contains bullying content 😟.
-            </p>
-          </Box>
-          <hr />
-        </div>
-      ))}
+      {/* Render notifications if available, otherwise show a message */}
+      { flaggedComments.length > 0 ? (
+        flaggedComments.map((comment, index) => (
+          <div key={index} className="notification">
+            <Box sx={{ p: 1 }}>
+              <p>
+                <strong> Warning ⛔: </strong> Your recent message
+                <span> "{comment}"</span> contains bullying content 😟.
+              </p>
+            </Box>
+            <hr />
+          </div>
+        ))
+      ) : (
+        <Box sx={{ p: 1 }}>
+        <p>
+        No warnings to show 😀! Keep up the good work!
+        </p>
+      </Box>
+      )}
     </div>
   );
 }

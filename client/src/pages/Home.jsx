@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Layout from "../components/Layout";
 import "./style/Home.css";
@@ -8,14 +8,20 @@ import Notification from "../components/Notification";
 
 function Home() {
 
-
+  //! If post is successful, trigger refresh of notifications
+const [refreshNotifications, setRefreshNotifications] = useState(false);
+  const handleRefreshNotifications = () => {
+    setTimeout(() => {
+      setRefreshNotifications((prevRefresh) => !prevRefresh);
+    }, 3000); // 3000 milliseconds = 3 seconds
+  };
   return (
     <>
       <Layout>
         <div className="content">
           <SideBar />
-          <Post />
-          <Notification />
+          <Post refreshNotifications={handleRefreshNotifications}/>
+          <Notification key={refreshNotifications} />
         </div>
       </Layout>
     </>
