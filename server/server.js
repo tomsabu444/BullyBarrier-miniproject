@@ -7,7 +7,7 @@ const { ClerkExpressRequireAuth } = require("@clerk/clerk-sdk-node")
 
 const analyseComment = require("./component/analyse_Comment");
 const getcomments = require("./component/Show_Post");
-
+const AlertUser = require("./component/Alert_user")
 const app = express();
 const port = process.env.PORT;
 
@@ -38,6 +38,11 @@ app.use("/api", analyseComment);
 
 //! Show Post
 app.use("/api", getcomments);
+
+//! flagged post
+app.use("/api", AlertUser);
+
+
 
 //database connect
 mongoose

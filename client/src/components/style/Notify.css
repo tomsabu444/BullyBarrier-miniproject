@@ -38,3 +38,7 @@
 .notification hr {
     opacity: .5;
 }
+
+.notification span {
+    color: red;
+}
