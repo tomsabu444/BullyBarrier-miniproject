@@ -42,7 +42,7 @@ function ShowPost() {
         const token = await getToken();
 
         const response = await Axios.get(
-          "https://bullybarrier-miniproject.onrender.com/api/getcomments",
+          "http://localhost:5273/api/getcomments",
           {
             headers: {
               "Content-Type": "application/json",

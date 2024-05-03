@@ -47,7 +47,7 @@ function Post({ refreshNotifications }) {
       const token = await getToken();
       //* Show promise notification and send data
       const promise =  Axios.post(
-        "https://bullybarrier-miniproject.onrender.com/api/content-analyse",
+        "http://localhost:5273/api/content-analyse",
         postData,
         {
           headers: {
