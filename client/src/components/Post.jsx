@@ -46,7 +46,7 @@ function Post({ refreshNotifications }) {
 
       const token = await getToken();
       //* Show promise notification and send data
-      const promise = Axios.post(
+      const promise =  Axios.post(
         "http://localhost:5273/api/content-analyse",
         postData,
         {
