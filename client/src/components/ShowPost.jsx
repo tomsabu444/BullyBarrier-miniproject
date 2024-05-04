@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./style/ShowPost.css";
-import { useAuth } from "@clerk/clerk-react";
-
+import { useAuth, useClerk } from "@clerk/clerk-react";
+import { Button } from "@mui/material";
 import verified_image from "../assets/verified_image.gif";
 
 //* Function to convert timestamp to time ago format
@@ -34,6 +34,7 @@ function ShowPost() {
 
   //! Api Auth
   const { getToken } = useAuth();
+  const { user } = useClerk();
 
   useEffect(() => {
     // Fetch comments data from the backend API
@@ -58,6 +59,28 @@ function ShowPost() {
 
     fetchComments();
   }, []);
+
+  const handleDeletePost = async (commentId) => {
+    try {
+      const token = await getToken();
+      await Axios.delete(
+        `http://localhost:5273/api/deletecomment/${commentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // Update comments after deletion
+      const updatedComments = comments.filter(
+        (comment) => comment._id !== commentId
+      );
+      setComments(updatedComments);
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      // Handle error
+    }
+  };
 
   return (
     <div className="feed">
@@ -88,6 +111,12 @@ function ShowPost() {
           >
             {/* Adjust color as needed */}
             <p>{comment.content}</p>
+            {user &&
+              user.username === comment.user.username && ( // Compare user IDs
+                <Button onClick={() => handleDeletePost(comment._id)}>
+                  Delete
+                </Button>
+              )}
           </div>
           <div className="feed-hr-end">
             <hr />

@@ -3,19 +3,21 @@ const mongoose = require("mongoose");
 const cros = require("cors");
 require("dotenv").config();
 
-const { ClerkExpressRequireAuth } = require("@clerk/clerk-sdk-node")
+const { ClerkExpressRequireAuth } = require("@clerk/clerk-sdk-node");
 
 const analyseComment = require("./component/analyse_Comment");
 const getcomments = require("./component/Show_Post");
-const AlertUser = require("./component/Alert_user")
+const AlertUser = require("./component/Alert_user");
+const deleteComment = require("./component/Delete_Comment");
+
 const app = express();
 const port = process.env.PORT;
 
 app.use(cros());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('<h1>Bully Barriers || Miniproject S6 </h1>');
+app.get("/", (req, res) => {
+  res.send("<h1>Bully Barriers || Miniproject S6 </h1>");
 });
 
 app.listen(port, () =>
@@ -24,14 +26,14 @@ app.listen(port, () =>
 
 //? Api Auth
 // Use the strict middleware that raises an error when unauthenticated
-app.use('/api', ClerkExpressRequireAuth(), (req, res, next) => {
+app.use("/api", ClerkExpressRequireAuth(), (req, res, next) => {
   next();
-})
+});
 
 app.use((err, req, res, next) => {
   // console.error(err.stack)
-  res.status(401).send('Unauthenticated!')
-})
+  res.status(401).send("Unauthenticated!");
+});
 
 //! comment moderation
 app.use("/api", analyseComment);
@@ -42,7 +44,8 @@ app.use("/api", getcomments);
 //! flagged post
 app.use("/api", AlertUser);
 
-
+//! Delete Post
+app.use("/api", deleteComment);
 
 //database connect
 mongoose
