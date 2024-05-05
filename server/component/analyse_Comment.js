@@ -6,7 +6,7 @@
 const express = require("express");
 const OpenAI = require("openai");
 const Comment = require("../database/CommentSchema"); //? Comment database Schema
-
+const { ClerkExpressWithAuth } = require("@clerk/clerk-sdk-node");
 const sendEmailAlert = require("../utils/sendEmailAlert");
 
 const router = express.Router();
@@ -15,8 +15,9 @@ const openai = new OpenAI({
   apiKey: process.env.MODERATION_API,
 });
 
-router.post("/content-analyse", async (req, res) => {
-  const { clerkUserId, content } = req.body; //? Extract clerkUserId and content from request body
+router.post("/content-analyse", ClerkExpressWithAuth(), async (req, res) => {
+  const { content } = req.body; //? Extract content from request body
+  const clerkUserId = req.auth?.userId; // Extract user ID from the authenticated user
 
   try {
     const moderation = await openai.moderations.create({ input: content });

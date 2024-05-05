@@ -36,7 +36,7 @@ function Post({ refreshNotifications }) {
       }
 
       const postData = {
-        clerkUserId: user.id,
+        // clerkUserId: user.id,
         // fullname: user.fullName.toUpperCase(),
         // username: user.username,
         // email: user.emailAddresses[0].emailAddress,
