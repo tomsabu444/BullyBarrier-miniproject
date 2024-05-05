@@ -113,7 +113,7 @@ function ShowPost() {
             <p>{comment.content}</p>
             {user &&
               user.username === comment.user.username && ( // Compare user IDs
-                <Button onClick={() => handleDeletePost(comment._id)}>
+                <Button color="error" onClick={() => handleDeletePost(comment._id)}>
                   Delete
                 </Button>
               )}
