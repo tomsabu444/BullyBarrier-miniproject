@@ -37,11 +37,11 @@ router.post("/content-analyse", async (req, res) => {
     await comment.save();
 
     //! Send email Alert
-    if (moderation.results[0].flagged) {
-      // If the comment is flagged, send an email alert
-      const { categories } = moderation.results[0];
-      sendEmailAlert(clerkUserId, content, categories);
-    }
+    // if (moderation.results[0].flagged) {
+    //   // If the comment is flagged, send an email alert
+    //   const { categories } = moderation.results[0];
+    //   sendEmailAlert(clerkUserId, content, categories);
+    // }
 
     res.status(200).json({ message: "Comment saved successfully" }); //? return message notification to front end
   } catch (error) {
