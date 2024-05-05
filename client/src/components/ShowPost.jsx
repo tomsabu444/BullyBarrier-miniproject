@@ -3,6 +3,7 @@ import Axios from "axios";
 import "./style/ShowPost.css";
 import { useAuth, useClerk } from "@clerk/clerk-react";
 import { Button } from "@mui/material";
+import { toast } from "react-toastify";
 import verified_image from "../assets/verified_image.gif";
 
 //* Function to convert timestamp to time ago format
@@ -76,9 +77,10 @@ function ShowPost() {
         (comment) => comment._id !== commentId
       );
       setComments(updatedComments);
+      toast.info("Comment Deleted");
     } catch (error) {
       console.error("Error deleting comment:", error);
-      // Handle error
+      toast.error("Failed to Deleting comment. Please try again later.");
     }
   };
 
