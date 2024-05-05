@@ -19,11 +19,11 @@ const AlertDialogDemo = () => (
         </AlertDialog.Description>
         <div style={{ display: 'flex', gap: 25, justifyContent: 'flex-end' }}>
           <AlertDialog.Cancel asChild>
-            <Button className="Button mauve">Cancel</Button>
+            <Button variant="contained">Cancel</Button>
           </AlertDialog.Cancel>
           <AlertDialog.Action asChild>
           <SignOutButton>
-            <Button className="Button red">Yes, Log out</Button>
+            <Button variant="contained" color='error'>Yes, Log out</Button>
             </SignOutButton>
           </AlertDialog.Action>
         </div>

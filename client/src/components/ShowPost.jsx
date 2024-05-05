@@ -4,7 +4,8 @@ import "./style/ShowPost.css";
 import { useAuth, useClerk } from "@clerk/clerk-react";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 import verified_image from "../assets/verified_image.gif";
 
@@ -86,6 +87,42 @@ function ShowPost() {
     }
   };
 
+  const DeleteAlertDialog = ({ commentId }) => (
+    <AlertDialog.Root>
+      <AlertDialog.Trigger asChild>
+        <Button>
+          <DeleteIcon />
+        </Button>
+      </AlertDialog.Trigger>
+      <AlertDialog.Portal>
+        <AlertDialog.Overlay className="AlertDialogOverlay" />
+        <AlertDialog.Content className="AlertDialogContent">
+          <AlertDialog.Title className="AlertDialogTitle">
+            Are you absolutely sure?
+          </AlertDialog.Title>
+          <AlertDialog.Description className="AlertDialogDescription">
+            This action cannot be undone. Are you sure you want to delete this
+            comment?
+          </AlertDialog.Description>
+          <div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
+            <AlertDialog.Cancel asChild>
+              <Button variant="contained">Cancel</Button>
+            </AlertDialog.Cancel>
+            <AlertDialog.Action asChild>
+              <Button
+                variant="contained"
+                color="error"
+                onClick={() => handleDeletePost(commentId)}
+              >
+                Delete
+              </Button>
+            </AlertDialog.Action>
+          </div>
+        </AlertDialog.Content>
+      </AlertDialog.Portal>
+    </AlertDialog.Root>
+  );
+
   return (
     <div className="feed">
       {comments.map((comment) => (
@@ -117,9 +154,7 @@ function ShowPost() {
             <p>{comment.content}</p>
             {user &&
               user.username === comment.user.username && ( // Compare user IDs
-                <Button color="info"  onClick={() => handleDeletePost(comment._id)}>
-                 <DeleteIcon />
-                </Button>
+                <DeleteAlertDialog commentId={comment._id} />
               )}
           </div>
           <div className="feed-hr-end">
