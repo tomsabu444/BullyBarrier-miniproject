@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-
 const Comment = require("../database/CommentSchema");
+const { ClerkExpressWithAuth } = require("@clerk/clerk-sdk-node");
 
-router.get("/flaggedpost/:clerkUserId", async (req, res) => {
-  const { clerkUserId } = req.params;
+router.get("/flaggedpost", ClerkExpressWithAuth(), async (req, res) => {
+  const userId = req.auth?.userId; // Extract user ID from the authenticated user
 
   try {
     // Find all flagged comments for the specified user
     const flaggedComments = await Comment.find({
-      clerkUserId: clerkUserId,
+      clerkUserId: userId,
       flagged: true,
     });
     // Extract content from flagged comments

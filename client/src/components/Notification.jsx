@@ -7,7 +7,6 @@ import { useAuth, useClerk } from "@clerk/clerk-react";
 
 function Notify() {
   const [flaggedComments, setFlaggedComments] = useState([]);
-  const { user } = useClerk();
 
   //! Api Auth
   const { getToken } = useAuth();
@@ -16,11 +15,9 @@ function Notify() {
     // Fetch flagged comments for the current user
     const fetchFlaggedComments = async () => {
       try {
-        const clerkUserId = user.id;
-
         const token = await getToken();
         const response = await Axios.get(
-          `http://localhost:5273/api/flaggedpost/${clerkUserId}`,
+          `http://localhost:5273/api/flaggedpost`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -50,7 +47,7 @@ function Notify() {
       <hr />
 
       {/* Render notifications if available, otherwise show a message */}
-      { flaggedComments.length > 0 ? (
+      {flaggedComments.length > 0 ? (
         flaggedComments.map((comment, index) => (
           <div key={index} className="notification">
             <Box sx={{ p: 1 }}>
@@ -64,10 +61,8 @@ function Notify() {
         ))
       ) : (
         <Box sx={{ p: 1 }}>
-        <p>
-        No warnings to show 😀! Keep up the good work!
-        </p>
-      </Box>
+          <p>No warnings to show 😀! Keep up the good work!</p>
+        </Box>
       )}
     </div>
   );
