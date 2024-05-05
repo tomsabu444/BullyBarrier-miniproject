@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./style/ShowPost.css";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth, useClerk } from "@clerk/clerk-react";
+import { Button } from "@mui/material";
+import { toast } from "react-toastify";
+import DeleteIcon from "@mui/icons-material/Delete";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 import verified_image from "../assets/verified_image.gif";
 
@@ -34,6 +38,7 @@ function ShowPost() {
 
   //! Api Auth
   const { getToken } = useAuth();
+  const { user } = useClerk();
 
   useEffect(() => {
     // Fetch comments data from the backend API
@@ -58,6 +63,65 @@ function ShowPost() {
 
     fetchComments();
   }, []);
+
+  const handleDeletePost = async (commentId) => {
+    try {
+      const token = await getToken();
+      await Axios.delete(
+        `http://localhost:5273/api/deletecomment/${commentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // Update comments after deletion
+      const updatedComments = comments.filter(
+        (comment) => comment._id !== commentId
+      );
+      setComments(updatedComments);
+      toast.info("Comment Deleted");
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      toast.error("Failed to Deleting comment. Please try again later.");
+    }
+  };
+
+  const DeleteAlertDialog = ({ commentId }) => (
+    <AlertDialog.Root>
+      <AlertDialog.Trigger asChild>
+        <Button>
+          <DeleteIcon />
+        </Button>
+      </AlertDialog.Trigger>
+      <AlertDialog.Portal>
+        <AlertDialog.Overlay className="AlertDialogOverlay" />
+        <AlertDialog.Content className="AlertDialogContent">
+          <AlertDialog.Title className="AlertDialogTitle">
+            Are you absolutely sure?
+          </AlertDialog.Title>
+          <AlertDialog.Description className="AlertDialogDescription">
+            This action cannot be undone. Are you sure you want to delete this
+            comment?
+          </AlertDialog.Description>
+          <div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
+            <AlertDialog.Cancel asChild>
+              <Button variant="contained">Cancel</Button>
+            </AlertDialog.Cancel>
+            <AlertDialog.Action asChild>
+              <Button
+                variant="contained"
+                color="error"
+                onClick={() => handleDeletePost(commentId)}
+              >
+                Delete
+              </Button>
+            </AlertDialog.Action>
+          </div>
+        </AlertDialog.Content>
+      </AlertDialog.Portal>
+    </AlertDialog.Root>
+  );
 
   return (
     <div className="feed">
@@ -88,6 +152,10 @@ function ShowPost() {
           >
             {/* Adjust color as needed */}
             <p>{comment.content}</p>
+            {user &&
+              user.username === comment.user.username && ( // Compare user IDs
+                <DeleteAlertDialog commentId={comment._id} />
+              )}
           </div>
           <div className="feed-hr-end">
             <hr />
