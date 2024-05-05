@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Comment = require("../database/CommentSchema");
-bv
-
+const { ClerkExpressWithAuth } = require("@clerk/clerk-sdk-node");
 
 router.delete(
   "/deletecomment/:id",
