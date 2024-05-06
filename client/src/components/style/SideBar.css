@@ -31,17 +31,22 @@
   aspect-ratio: 1 / 1;
 }
 
-.profile-name {
-  width: 200px;
-  font-size: 16px;
-  padding-left: 15px;
+.account-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-blue);
+  width: 100%;
 }
 
-.account-icon {
-  display: flex;
-  align-items: center;
+.account-info svg {
   cursor: pointer;
-  color: var(--color-blue);
+}
+.profile-name {
+  width: 90%;
+  font-size: 16px;
+  padding-left: 15px;
+  color: var(--color-ascent1);
 }
 
 .follow-list {
