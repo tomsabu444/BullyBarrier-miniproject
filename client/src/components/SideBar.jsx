@@ -38,7 +38,6 @@ function SideBar() {
     return () => clearTimeout(timer);
   }, [showCredits]); // Run the effect whenever showCredits changes
 
-
   return (
     <>
       <div className="sidebar-content">
@@ -47,15 +46,13 @@ function SideBar() {
             <div className="avatar-box">
               <img draggable="false" src={user.imageUrl} alt="user-image" />
             </div>
-            <div className="profile-name">
-              <h2>{handleFullName()}</h2>
-              <p>@{user.username}</p>
-            </div>
-            {/* 
-        //!  show profile button 
-        */}
-            <div className="account-icon" onClick={handleProfileClick}>
-              <ManageAccountsSharpIcon />
+            <div className="account-info">
+              <div className="profile-name">
+                <h2>{handleFullName()}</h2>
+                <p>@{user.username}</p>
+              </div>
+              {/* //!  show profile button  */}
+              <ManageAccountsSharpIcon onClick={handleProfileClick} />
             </div>
           </div>
           <br />
