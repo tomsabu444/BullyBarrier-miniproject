@@ -41,13 +41,12 @@ function ShowPost() {
   const { user } = useClerk();
 
   useEffect(() => {
-    // Fetch comments data from the backend API
-    const fetchComments = async () => {
+    const fetchComments = async (page) => {
       try {
         const token = await getToken();
 
         const response = await Axios.get(
-          "http://localhost:5273/api/getcomments?page=0",
+          `http://localhost:5273/api/getcomments?page=${page}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -61,8 +60,17 @@ function ShowPost() {
       }
     };
 
-    fetchComments();
-  }, []);
+    // Initially fetch comments with page = 1
+    fetchComments(1);
+
+    // Set a timeout to fetch comments again with page = 0 after 5 seconds
+    const timeoutId = setTimeout(() => {
+      fetchComments(0);
+    }, 5000);
+
+    // Clear the timeout and fetch comments with page = 1 when the component unmounts or dependencies change
+    return () => clearTimeout(timeoutId);
+  }, [getToken]);
 
   const handleDeletePost = async (commentId) => {
     try {
