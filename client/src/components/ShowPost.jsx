@@ -47,7 +47,7 @@ function ShowPost() {
         const token = await getToken();
 
         const response = await Axios.get(
-          "http://localhost:5273/api/getcomments",
+          "http://localhost:5273/api/getcomments?page=0",
           {
             headers: {
               "Content-Type": "application/json",
@@ -55,7 +55,7 @@ function ShowPost() {
             },
           }
         );
-        setComments(response.data.reverse());
+        setComments(response.data);
       } catch (error) {
         console.error("Error fetching comments:", error);
       }
