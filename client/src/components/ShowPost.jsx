@@ -47,7 +47,7 @@ function ShowPost() {
         const token = await getToken();
 
         const response = await Axios.get(
-          "http://localhost:5273/api/getcomments?page=1",
+          "http://localhost:5273/api/getcomments?page=0",
           {
             headers: {
               "Content-Type": "application/json",
