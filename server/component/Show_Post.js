@@ -5,8 +5,18 @@ const User = require("../database/UserSchema");
 
 router.get("/getcomments", async (req, res) => {
   try {
-    // Fetch comments data from MongoDB
-    const comments = await Comment.find();
+    // Pagination parameters
+    const page = parseInt(req.query.page) || 1; // Default page 1
+    const limit = parseInt(req.query.limit) || 10; // Default limit 10 comments per page
+
+    // Calculate skip value based on page and limit
+    const skip = (page - 1) * limit;
+
+    // Fetch comments data from MongoDB with pagination
+    const comments = await Comment.find()
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 }); // Sort comments by createdAt in descending order
 
     // Initialize an array to store comments with user details
     const commentsWithUserDetails = [];
