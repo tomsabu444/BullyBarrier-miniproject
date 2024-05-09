@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SignedIn,
   SignedOut,
@@ -14,8 +14,20 @@ import SearchIcon from "@mui/icons-material/Search";
 import LogoImage from "../assets/logo-no-background.png";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ onSearch  }) {
   const { user } = useClerk();
+
+  const [usernameSearch, SetUsernameSearch] = useState(""); // Declare usernameSearch state
+
+  
+  const handleUserSearch =  (e) => {
+    SetUsernameSearch(e.target.value);
+  }
+   
+  const handleSearchClick = () => {
+    onSearch(usernameSearch);
+  };
+
 
   //user name to lowerCase
   const handleFirstname = () => {
@@ -37,9 +49,10 @@ function Navbar() {
         </div>
 
         <div className="nav_searchbaar">
-          <input type="text" name="null" id="null" placeholder="Search...." />
+          <input type="text" name="null" id="null" placeholder="Search By Username...."
+          onChange={handleUserSearch} />
           <div className="search_icon">
-            <SearchIcon id="search" />
+            <SearchIcon id="search" onClick={handleSearchClick} />
           </div>
         </div>
 

@@ -35,8 +35,16 @@ function timeAgo(timestamp) {
   return "just now";
 }
 
-function ShowPost() {
+function ShowPost({ usernameSearch }) {
   const [comments, setComments] = useState([]);
+
+    //* Filter comments based on username search
+    const filteredComments = comments.filter((comment) =>
+      comment.user.username.toLowerCase().includes(usernameSearch.toLowerCase())
+    );
+
+    console.log(filteredComments);
+  
 
   //! Api Auth
   const { getToken } = useAuth();
@@ -135,7 +143,7 @@ function ShowPost() {
 
   return (
     <div className="feed">
-      {comments.map((comment) => (
+      {filteredComments.map((comment) => (
         <div key={comment._id} className="users-posts">
           <div className="users-info">
             <div className="users-img-box">
