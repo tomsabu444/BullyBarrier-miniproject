@@ -48,7 +48,7 @@ function Post({ refreshNotifications }) {
 
       const token = await getToken();
       //* Show promise notification and send data
-      const promise =  Axios.post(
+      const promise = Axios.post(
         `${SERVER_BASE_URL}/api/content-analyse`,
         postData,
         {
@@ -75,7 +75,7 @@ function Post({ refreshNotifications }) {
       // //* Check if the request was successful
       if (response.status === 200) {
         setRefreshShowPost(true); //!  Refresh the posts in order to see new posted
- 
+
         //   //* Show success alert notification
         //   toast.success("Comment sent successfully");
         // } else {

@@ -18,15 +18,12 @@ function Notify() {
     const fetchFlaggedComments = async () => {
       try {
         const token = await getToken();
-        const response = await Axios.get(
-          `${SERVER_BASE_URL}/api/flaggedpost`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await Axios.get(`${SERVER_BASE_URL}/api/flaggedpost`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setFlaggedComments(response.data);
       } catch (error) {
         console.error("Error fetching flagged comments:", error);
