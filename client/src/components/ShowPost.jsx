@@ -86,7 +86,7 @@ function ShowPost({ usernameSearch }) {
     try {
       const token = await getToken();
       await Axios.delete(
-        `http://localhost:5273/api/deletecomment/${commentId}`,
+        `${SERVER_BASE_URL}/api/deletecomment/${commentId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
