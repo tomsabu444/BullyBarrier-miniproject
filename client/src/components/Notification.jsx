@@ -5,6 +5,8 @@ import NotificationImportantIcon from "@mui/icons-material/NotificationImportant
 import Axios from "axios";
 import { useAuth, useClerk } from "@clerk/clerk-react";
 
+import { SERVER_BASE_URL } from "../config/utils.config";
+
 function Notify() {
   const [flaggedComments, setFlaggedComments] = useState([]);
 
@@ -16,15 +18,12 @@ function Notify() {
     const fetchFlaggedComments = async () => {
       try {
         const token = await getToken();
-        const response = await Axios.get(
-          `http://localhost:5273/api/flaggedpost`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await Axios.get(`${SERVER_BASE_URL}/api/flaggedpost`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setFlaggedComments(response.data);
       } catch (error) {
         console.error("Error fetching flagged comments:", error);

@@ -6,6 +6,8 @@ import ShowPost from "./ShowPost";
 import Axios from "axios";
 import { toast } from "react-toastify";
 
+import { SERVER_BASE_URL } from "../config/utils.config";
+
 function Post({ refreshNotifications }) {
   const { user } = useClerk();
   const [inputValue, setInputValue] = useState(""); //? Post Input
@@ -46,8 +48,8 @@ function Post({ refreshNotifications }) {
 
       const token = await getToken();
       //* Show promise notification and send data
-      const promise =  Axios.post(
-        "http://localhost:5273/api/content-analyse",
+      const promise = Axios.post(
+        `${SERVER_BASE_URL}/api/content-analyse`,
         postData,
         {
           headers: {
@@ -73,7 +75,7 @@ function Post({ refreshNotifications }) {
       // //* Check if the request was successful
       if (response.status === 200) {
         setRefreshShowPost(true); //!  Refresh the posts in order to see new posted
- 
+
         //   //* Show success alert notification
         //   toast.success("Comment sent successfully");
         // } else {
