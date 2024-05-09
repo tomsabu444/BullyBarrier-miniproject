@@ -18,14 +18,14 @@ function Home() {
 
   const [searchQuery, setSearchQuery] = useState(""); // Declare searchQuery state
 
-  const handleSearch = (searchQuery) => {
-    setSearchQuery(searchQuery);
-  };
+  // const handleSearch = (searchQuery) => {
+  //   setSearchQuery(searchQuery);
+  // };
 
 
   return (
     <>
-      <Navbar onSearch={handleSearch} />
+      <Navbar onSearch={setSearchQuery} />
       <div className="content">
         <SideBar />
         <Post
