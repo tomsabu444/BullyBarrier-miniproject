@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 import { SERVER_BASE_URL } from "../config/utils.config";
 
-function Post({ refreshNotifications }) {
+function Post({ refreshNotifications , usernameSearch }) {
   const { user } = useClerk();
   const [inputValue, setInputValue] = useState(""); //? Post Input
 
@@ -110,7 +110,7 @@ function Post({ refreshNotifications }) {
       </div>
 
       <div className="show-post">
-        <ShowPost key={refreshShowPost} />
+        <ShowPost key={refreshShowPost} usernameSearch={usernameSearch}/>
       </div>
     </div>
   );
