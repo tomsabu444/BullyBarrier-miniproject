@@ -5,6 +5,8 @@ import NotificationImportantIcon from "@mui/icons-material/NotificationImportant
 import Axios from "axios";
 import { useAuth, useClerk } from "@clerk/clerk-react";
 
+import { SERVER_BASE_URL } from "../config/utils.config";
+
 function Notify() {
   const [flaggedComments, setFlaggedComments] = useState([]);
 
@@ -17,7 +19,7 @@ function Notify() {
       try {
         const token = await getToken();
         const response = await Axios.get(
-          `http://localhost:5273/api/flaggedpost`,
+          `${SERVER_BASE_URL}/api/flaggedpost`,
           {
             headers: {
               "Content-Type": "application/json",

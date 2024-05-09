@@ -6,6 +6,8 @@ import ShowPost from "./ShowPost";
 import Axios from "axios";
 import { toast } from "react-toastify";
 
+import { SERVER_BASE_URL } from "../config/utils.config";
+
 function Post({ refreshNotifications }) {
   const { user } = useClerk();
   const [inputValue, setInputValue] = useState(""); //? Post Input
@@ -47,7 +49,7 @@ function Post({ refreshNotifications }) {
       const token = await getToken();
       //* Show promise notification and send data
       const promise =  Axios.post(
-        "http://localhost:5273/api/content-analyse",
+        `${SERVER_BASE_URL}/api/content-analyse`,
         postData,
         {
           headers: {

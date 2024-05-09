@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
+import { SERVER_BASE_URL } from "../config/utils.config";
+
 import verified_image from "../assets/verified_image.gif";
 
 //* Function to convert timestamp to time ago format
@@ -46,7 +48,7 @@ function ShowPost() {
         const token = await getToken();
 
         const response = await Axios.get(
-          `http://localhost:5273/api/getcomments?page=${page}`,
+          `${SERVER_BASE_URL}/api/getcomments?page=${page}`,
           {
             headers: {
               "Content-Type": "application/json",
