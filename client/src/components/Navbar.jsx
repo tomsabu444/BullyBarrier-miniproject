@@ -22,12 +22,9 @@ function Navbar({ onSearch  }) {
   
   const handleUserSearch =  (e) => {
     SetUsernameSearch(e.target.value);
+    onSearch(usernameSearch);
   }
    
-  const handleSearchClick = () => {
-    onSearch(usernameSearch);
-  };
-
 
   //user name to lowerCase
   const handleFirstname = () => {
@@ -51,9 +48,9 @@ function Navbar({ onSearch  }) {
         <div className="nav_searchbaar">
           <input type="text" name="null" id="null" placeholder="Search By Username...."
           onChange={handleUserSearch} />
-          <div className="search_icon">
-            <SearchIcon id="search" onClick={handleSearchClick} />
-          </div>
+          {/* <div className="search_icon">
+            <SearchIcon id="search" />
+          </div> */}
         </div>
 
         <div className="profile-box">
