@@ -17,13 +17,11 @@ import { Link } from "react-router-dom";
 function Navbar({ onSearch  }) {
   const { user } = useClerk();
 
-  const [usernameSearch, SetUsernameSearch] = useState(""); // Declare usernameSearch state
-
+  const handleUserSearch = (e) => {
+    const searchValue = e.target.value.trim(); // Trim any leading or trailing whitespace
+    onSearch(searchValue);
+  };
   
-  const handleUserSearch =  (e) => {
-    SetUsernameSearch(e.target.value);
-    onSearch(usernameSearch);
-  }
    
 
   //user name to lowerCase
@@ -45,7 +43,7 @@ function Navbar({ onSearch  }) {
           </div>
         </div>
 
-        <div className="nav_searchbaar">
+        <div className="nav_searchbaar"> 
           <input type="text" name="null" id="null" placeholder="Search By Username...."
           onChange={handleUserSearch} />
           {/* <div className="search_icon">

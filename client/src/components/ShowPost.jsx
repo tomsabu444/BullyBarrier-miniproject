@@ -38,13 +38,18 @@ function timeAgo(timestamp) {
 function ShowPost({ usernameSearch }) {
   const [comments, setComments] = useState([]);
 
-    //* Filter comments based on username search
-    const filteredComments = comments.filter((comment) =>
-      comment.user.username.toLowerCase().includes(usernameSearch.toLowerCase())
-    );
+  console.log(usernameSearch);
 
-    console.log(filteredComments);
-  
+  //* Apply filtering if usernameSearch is provided, otherwise show all comments
+  const filteredComments = usernameSearch
+    ? comments.filter((comment) =>
+        comment.user.username
+          .toLowerCase()
+          .includes(usernameSearch.toLowerCase())
+      )
+    : comments;
+
+  console.log(filteredComments);
 
   //! Api Auth
   const { getToken } = useAuth();
@@ -85,14 +90,11 @@ function ShowPost({ usernameSearch }) {
   const handleDeletePost = async (commentId) => {
     try {
       const token = await getToken();
-      await Axios.delete(
-        `${SERVER_BASE_URL}/api/deletecomment/${commentId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await Axios.delete(`${SERVER_BASE_URL}/api/deletecomment/${commentId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       // Update comments after deletion
       const updatedComments = comments.filter(
         (comment) => comment._id !== commentId
