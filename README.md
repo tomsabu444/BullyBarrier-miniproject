@@ -12,8 +12,7 @@ This project aims to develop a cyberbullying comment detection system integrated
 
 ## Technologies Used
 - **Frontend:**
-  - Vite
-  - React
+  - Vite + React
   - Material UI
   
 - **Backend:**
@@ -52,11 +51,11 @@ This project aims to develop a cyberbullying comment detection system integrated
 4. Set up environment variables:
    - Copy the `.env.example` file and rename it to `.env`.
    - Add necessary environment variables such as database connection string, API keys, etc.
-5. Start the backend server:
+5. Start the backend server: `cd server`
     ```bash
     npm run server
     ```
-6. Start the frontend development server:
+6. Start the frontend development server: `cd client`
     ```bash
     npm run dev
     ```
