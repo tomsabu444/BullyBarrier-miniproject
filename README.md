@@ -4,8 +4,8 @@
 ## installation
 
 ```
-git clone https://github.com/tomsabu444/S6-Miniproject.git
-cd S6-Miniproject
+git clone https://github.com/tomsabu444/BullyBarrier-miniproject.git
+cd BullyBarrier-miniproject
 
 cd client
 npm install
