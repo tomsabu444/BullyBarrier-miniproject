@@ -12,8 +12,7 @@ This project aims to develop a cyberbullying comment detection system integrated
 
 ## Technologies Used
 - **Frontend:**
-  - Vite
-  - React
+  - Vite + React
   - Material UI
   
 - **Backend:**
