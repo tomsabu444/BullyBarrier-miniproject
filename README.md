@@ -50,7 +50,7 @@ This project aims to develop a cyberbullying comment detection system integrated
     npm install
     ```
 4. Set up environment variables:
-   - Create a `.env` file in the root directory.
+   - Copy the `.env.example` file and rename it to `.env`.
    - Add necessary environment variables such as database connection string, API keys, etc.
 5. Start the backend server:
     ```bash
