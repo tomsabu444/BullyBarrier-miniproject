@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
+import { SERVER_BASE_URL } from "../config/utils.config";
+
 import verified_image from "../assets/verified_image.gif";
 
 //* Function to convert timestamp to time ago format
@@ -33,21 +35,33 @@ function timeAgo(timestamp) {
   return "just now";
 }
 
-function ShowPost() {
+function ShowPost({ usernameSearch }) {
   const [comments, setComments] = useState([]);
+
+  console.log(usernameSearch);
+
+  //* Apply filtering if usernameSearch is provided, otherwise show all comments
+  const filteredComments = usernameSearch
+    ? comments.filter((comment) =>
+        comment.user.username
+          .toLowerCase()
+          .includes(usernameSearch.toLowerCase())
+      )
+    : comments;
+
+  console.log(filteredComments);
 
   //! Api Auth
   const { getToken } = useAuth();
   const { user } = useClerk();
 
   useEffect(() => {
-    // Fetch comments data from the backend API
-    const fetchComments = async () => {
+    const fetchComments = async (page) => {
       try {
         const token = await getToken();
 
         const response = await Axios.get(
-          "http://localhost:5273/api/getcomments",
+          `${SERVER_BASE_URL}/api/getcomments?page=${page}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -55,26 +69,32 @@ function ShowPost() {
             },
           }
         );
-        setComments(response.data.reverse());
+        setComments(response.data);
       } catch (error) {
         console.error("Error fetching comments:", error);
       }
     };
 
-    fetchComments();
-  }, []);
+    // Initially fetch comments with page = 1
+    fetchComments(1);
+
+    // Set a timeout to fetch comments again with page = 0 after 5 seconds
+    const timeoutId = setTimeout(() => {
+      fetchComments(0);
+    }, 5000);
+
+    // Clear the timeout and fetch comments with page = 1 when the component unmounts or dependencies change
+    return () => clearTimeout(timeoutId);
+  }, [getToken]);
 
   const handleDeletePost = async (commentId) => {
     try {
       const token = await getToken();
-      await Axios.delete(
-        `http://localhost:5273/api/deletecomment/${commentId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await Axios.delete(`${SERVER_BASE_URL}/api/deletecomment/${commentId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       // Update comments after deletion
       const updatedComments = comments.filter(
         (comment) => comment._id !== commentId
@@ -125,7 +145,7 @@ function ShowPost() {
 
   return (
     <div className="feed">
-      {comments.map((comment) => (
+      {filteredComments.map((comment) => (
         <div key={comment._id} className="users-posts">
           <div className="users-info">
             <div className="users-img-box">
