@@ -1,0 +1,97 @@
+.team-section {
+    width: 100%;
+    padding: 10px 0px 0px;
+    margin-top: 10px;
+    /* background-color: var(--color-primary); */
+    border-radius: 10px;
+    height: 300px;
+    overflow: hidden; /* Hide overflow to create scroll effect */
+  }
+  
+  /* Keyframes for continuous scrolling */
+  @keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(calc(-100% - 16px)); } /* Adjust according to your design */
+  }
+  
+  .team-member-container {
+    display: flex;
+    flex-direction: column;
+    animation: scroll 30s linear infinite; /* Adjust duration and timing function as needed */
+  }
+  
+  .team-member-container:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+  }
+  
+  .team-member {
+    position: relative;
+    z-index: 1;
+    min-height: 60px;
+    display: flex;
+    gap: 16px;
+    border-radius: 24px;
+    font-size: 16px;
+    padding: 16px;
+    align-items: center;
+    background-color: var(--color-secondary);
+    margin-bottom: 5px;
+  }
+  
+  .social-links {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    margin-left: auto;
+    gap: 6px;
+    flex-direction: row;
+  }
+  
+  .social-links svg {
+    color: var(--color-blue);
+  }
+  
+  .team-member-avatar {
+    display: flex;
+    align-self: center;
+  }
+  
+  .team-member-avatar img {
+    width: 60px;
+    border-radius: 60px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .team-member-socials {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .team-member-name {
+    display: grid;
+    gap: 2px;
+  }
+  
+  .team-member-name h3 {
+    font-size: medium;
+  }
+  
+  .team-member-name p {
+    font-size: smaller;
+  }
+  
+  .team-member-chosen {
+    box-shadow: 8px 8px 32px #e1e1e1;
+  }
+  
+  .team-member-drag {
+    opacity: 0;
+  }
+  
+  @media (max-width: 650px) {
+    .social-links {
+      flex-direction: column;
+    }
+  }
+  
