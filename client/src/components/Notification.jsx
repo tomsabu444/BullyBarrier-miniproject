@@ -7,7 +7,7 @@ import { useAuth } from "@clerk/clerk-react";
 
 import { SERVER_BASE_URL } from "../config/utils.config";
 
-function Notify() {
+function Notify({ onFlaggedCommentsCountChange }) {
   const [flaggedComments, setFlaggedComments] = useState([]);
 
   //! Api Auth
@@ -25,13 +25,16 @@ function Notify() {
           },
         });
         setFlaggedComments(response.data);
+        
+        //! Pass the count of flagged comments to the Home component
+        onFlaggedCommentsCountChange(response.data.length);
       } catch (error) {
         console.error("Error fetching flagged comments:", error);
       }
     };
 
     fetchFlaggedComments();
-  }, []);
+  }, [getToken, onFlaggedCommentsCountChange]);
 
   return (
     <div className="notify">
