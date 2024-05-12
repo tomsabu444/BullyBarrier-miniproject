@@ -57,8 +57,8 @@ function SideBar() {
           </div>
           <br />
           <div className="follow-list">
-            <h4>followers 0</h4>
-            <h4>following 0</h4>
+            <h4>Followers 0</h4>
+            <h4>Following 0</h4>
           </div>
           <hr />
           <br />
