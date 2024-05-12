@@ -8,7 +8,6 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { Button } from "@mui/material";
 import AlertDialog from "./AlertDialogDemo";
 import Credits from "../pages/Credits"; // Import the Credits component
-import { Link } from "react-router-dom";
 
 function SideBar() {
   const { user } = useClerk();

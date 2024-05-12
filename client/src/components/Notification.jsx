@@ -3,7 +3,7 @@ import "./style/Notify.css";
 import { Badge, Box } from "@mui/material";
 import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 import Axios from "axios";
-import { useAuth, useClerk } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 
 import { SERVER_BASE_URL } from "../config/utils.config";
 
