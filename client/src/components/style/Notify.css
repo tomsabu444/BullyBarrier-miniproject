@@ -32,7 +32,7 @@
 }
 
 .notification{
-    max-height: calc(70vh - 200px);
+    max-height: calc(90vh - 200px);
     overflow-y: auto;
 }
 
