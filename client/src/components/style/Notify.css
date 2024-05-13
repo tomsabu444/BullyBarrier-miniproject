@@ -7,7 +7,8 @@
     width: clamp(250px, 350px, 50%);
     height: max-content;
     color: var(--color-ascent1);
-    padding: 10px 20px 10px 20px
+    padding: 10px 20px 10px 20px;
+
     
 }
 
@@ -31,7 +32,7 @@
 }
 
 .notification{
-    max-height: calc(80vh - 300px);
+    max-height: calc(70vh - 200px);
     overflow-y: auto;
 }
 
