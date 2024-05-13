@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./style/ShowPost.css";
 import { useAuth, useClerk } from "@clerk/clerk-react";
-import { Button } from "@mui/material";
+import { Button } from "@mui/material"; // Added CircularProgress for loading indicator
 import { toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 import { SERVER_BASE_URL } from "../config/utils.config";
 
-import verified_image from "../assets/verified_image.gif";
+import Loading from "./Loading";
 
 //* Function to convert timestamp to time ago format
 function timeAgo(timestamp) {
@@ -37,6 +37,7 @@ function timeAgo(timestamp) {
 
 function ShowPost({ usernameSearch }) {
   const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true); // State to track loading
 
   console.log(usernameSearch);
 
@@ -70,8 +71,10 @@ function ShowPost({ usernameSearch }) {
           }
         );
         setComments(response.data);
+        setLoading(false); // Set loading to false once data is fetched
       } catch (error) {
         console.error("Error fetching comments:", error);
+        setLoading(false); // Set loading to false in case of error
       }
     };
 
@@ -145,43 +148,59 @@ function ShowPost({ usernameSearch }) {
 
   return (
     <div className="feed">
-      {filteredComments.map((comment) => (
-        <div key={comment._id} className="users-posts">
-          <div className="users-info">
-            <div className="users-img-box">
-              <img
-                draggable="false"
-                src={comment.user.image}
-                alt="user-image"
-              />
-            </div>
-            <div className="posted-user">
-              <div className="users-names">
-                <h4>
-                  {`${comment.user.firstname.toUpperCase()} ${comment.user.lastname.toUpperCase()}`}
-                  {/*//* <img src={verified_image} alt="verified_image" /> */}
-                </h4>
-                <p>@{comment.user.username} </p>
-              </div>
-              <span>{timeAgo(comment.createdAt)}</span>
-              {/* Display time ago format */}
-            </div>
-          </div>
-          <div
-            className={comment.flagged ? "comment-box flagged" : "comment-box"}
-          >
-            {/* Adjust color as needed */}
-            <p>{comment.content}</p>
-            {user &&
-              user.username === comment.user.username && ( // Compare user IDs
-                <DeleteAlertDialog commentId={comment._id} />
-              )}
-          </div>
-          <div className="feed-hr-end">
-            <hr />
-          </div>
+      {loading ? ( // Show loading indicator if data is loading
+        <div className="users-posts"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "300px",
+
+          }}
+        >
+          <Loading />
         </div>
-      ))}
+      ) : (
+        filteredComments.map((comment) => (
+          <div key={comment._id} className="users-posts">
+            <div className="users-info">
+              <div className="users-img-box">
+                <img
+                  draggable="false"
+                  src={comment.user.image}
+                  alt="user-image"
+                />
+              </div>
+              <div className="posted-user">
+                <div className="users-names">
+                  <h4>
+                    {`${comment.user.firstname.toUpperCase()} ${comment.user.lastname.toUpperCase()}`}
+                    {/*//* <img src={verified_image} alt="verified_image" /> */}
+                  </h4>
+                  <p>@{comment.user.username} </p>
+                </div>
+                <span>{timeAgo(comment.createdAt)}</span>
+                {/* Display time ago format */}
+              </div>
+            </div>
+            <div
+              className={
+                comment.flagged ? "comment-box flagged" : "comment-box"
+              }
+            >
+              {/* Adjust color as needed */}
+              <p>{comment.content}</p>
+              {user &&
+                user.username === comment.user.username && ( // Compare user IDs
+                  <DeleteAlertDialog commentId={comment._id} />
+                )}
+            </div>
+            <div className="feed-hr-end">
+              <hr />
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }
