@@ -47,7 +47,9 @@ function Notify({ onFlaggedCommentsCountChange }) {
         </div>
       </div>
       <hr />
+      <div className="notification">
 
+      
       {/* Render notifications if available, otherwise show a message */}
       {flaggedComments.length > 0 ? (
         flaggedComments.map((comment, index) => (
@@ -66,6 +68,7 @@ function Notify({ onFlaggedCommentsCountChange }) {
           <p>No warnings to show 😀! Keep up the good work!</p>
         </Box>
       )}
+      </div>
     </div>
   );
 }
