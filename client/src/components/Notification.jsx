@@ -32,7 +32,7 @@ function Notify({ onFlaggedCommentsCountChange }) {
         setLoading(false); // Set loading to false once data is fetched
       } catch (error) {
         console.error("Error fetching flagged comments:", error);
-        setLoading(false); // Set loading to false in case of error
+        setLoading(true); // Set loading to true in case of error
       }
     };
 
