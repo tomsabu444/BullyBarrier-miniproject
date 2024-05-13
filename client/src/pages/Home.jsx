@@ -22,6 +22,12 @@ function Home() {
   //   setSearchQuery(searchQuery);
   // };
 
+  //! bully post count pass from notification
+  const [flaggedCommentsCount, setFlaggedCommentsCount] = useState(0);
+
+  const handleFlaggedCommentsCountChange = (count) => {
+    setFlaggedCommentsCount(count);
+  };
 
   return (
     <>
@@ -31,8 +37,12 @@ function Home() {
         <Post
           refreshNotifications={handleRefreshNotifications}
           usernameSearch={searchQuery}
+          flaggedCommentsCount={flaggedCommentsCount}
         />
-        <Notification key={refreshNotifications} />
+        <Notification
+          key={refreshNotifications}
+          onFlaggedCommentsCountChange={handleFlaggedCommentsCountChange}
+        />
       </div>
     </>
   );
