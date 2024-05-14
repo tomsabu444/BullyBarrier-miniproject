@@ -61,33 +61,21 @@ function ShowPost({ usernameSearch }) {
       try {
         const token = await getToken();
 
-        const response = await Axios.get(
-          `${SERVER_BASE_URL}/api/getcomments?page=${page}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setComments(response.data);
+        const response = await Axios.get(`${SERVER_BASE_URL}/api/getcomments`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setComments(response.data.reverse());
         setLoading(false); //* Set loading to false once data is fetched
       } catch (error) {
         console.error("Error fetching comments:", error);
         setLoading(true); //* Set loading to true in case of error
       }
     };
-
-    // Initially fetch comments with page = 1
-    fetchComments(1);
-
-    // Set a timeout to fetch comments again with page = 0 after 5 seconds
-    const timeoutId = setTimeout(() => {
-      fetchComments(0);
-    }, 5000);
-
-    // Clear the timeout and fetch comments with page = 1 when the component unmounts or dependencies change
-    return () => clearTimeout(timeoutId);
+    
+    fetchComments();
   }, [getToken]);
 
   const handleDeletePost = async (commentId) => {
@@ -149,13 +137,13 @@ function ShowPost({ usernameSearch }) {
   return (
     <div className="feed">
       {loading ? ( // Show loading indicator if data is loading
-        <div className="users-posts"
+        <div
+          className="users-posts"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "300px",
-
           }}
         >
           <Loading />
