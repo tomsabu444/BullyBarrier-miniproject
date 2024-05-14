@@ -39,7 +39,7 @@ function ShowPost({ usernameSearch }) {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true); // State to track loading
 
-  console.log(usernameSearch);
+  // console.log(usernameSearch);
 
   //* Apply filtering if usernameSearch is provided, otherwise show all comments
   const filteredComments = usernameSearch
@@ -50,7 +50,7 @@ function ShowPost({ usernameSearch }) {
       )
     : comments;
 
-  console.log(filteredComments);
+  // console.table(filteredComments);
 
   //! Api Auth
   const { getToken } = useAuth();
