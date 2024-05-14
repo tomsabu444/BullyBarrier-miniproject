@@ -1,38 +1,37 @@
 const express = require("express");
 const router = express.Router();
 const Comment = require("../database/CommentSchema");
-const User = require("../database/UserSchema");
 
 router.get("/getcomments", async (req, res) => {
   try {
-    // Fetch comments data from MongoDB
-    const comments = await Comment.find();
-
-    // Initialize an array to store comments with user details
-    const commentsWithUserDetails = [];
-
-    // Iterate through each comment to populate user information
-    for (let comment of comments) {
-      // Find user details based on clerkUserId
-      const user = await User.findOne({ clerkUserId: comment.clerkUserId });
-
-      // If user is found, add user details to the comment
-      if (user) {
-        const commentWithUserDetails = {
-          _id: comment._id,
-          content: comment.content,
-          flagged: comment.flagged,
-          createdAt: comment.createdAt,
+    // Aggregate comments with user details
+    const commentsWithUserDetails = await Comment.aggregate([
+      {
+        $lookup: {
+          from: 'users', // The collection to join
+          localField: 'clerkUserId', // Field from the comments collection
+          foreignField: 'clerkUserId', // Field from the users collection
+          as: 'userDetails' // The resulting field
+        }
+      },
+      {
+        $unwind: '$userDetails' // Deconstruct the array field
+      },
+      {
+        $project: {
+          _id: 1,
+          content: 1,
+          flagged: 1,
+          createdAt: 1,
           user: {
-            firstname: user.firstName,
-            lastname: user.lastName,
-            username: user.username,
-            image: user.image,
-          },
-        };
-        commentsWithUserDetails.push(commentWithUserDetails);
+            firstname: '$userDetails.firstName',
+            lastname: '$userDetails.lastName',
+            username: '$userDetails.username',
+            image: '$userDetails.image',
+          }
+        }
       }
-    }
+    ]);
 
     // Send the modified comments array with user details to the frontend
     res.json(commentsWithUserDetails);
