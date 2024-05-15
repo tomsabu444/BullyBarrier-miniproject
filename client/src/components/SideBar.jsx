@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import "./style/SideBar.css";
 import { useClerk, UserProfile } from "@clerk/clerk-react";
 
@@ -7,8 +7,8 @@ import ManageAccountsSharpIcon from "@mui/icons-material/ManageAccountsSharp";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Button } from "@mui/material";
 import AlertDialog from "./AlertDialogDemo";
-import Credits from "../pages/Credits"; // Import the Credits component
-import { Link } from "react-router-dom";
+import Loading from "./Loading";
+const Credits = lazy(() => import("../pages/Credits")); // Import the Credits component
 
 function SideBar() {
   const { user } = useClerk();
@@ -57,8 +57,8 @@ function SideBar() {
           </div>
           <br />
           <div className="follow-list">
-            <h4>followers 0</h4>
-            <h4>following 0</h4>
+            <h4>Followers 0</h4>
+            <h4>Following 0</h4>
           </div>
           <hr />
           <br />
@@ -77,7 +77,25 @@ function SideBar() {
         </div>
 
         {/* Show Credits component */}
-        {showCredits && <Credits onClose={handleCreditsClick} />}
+
+        {showCredits && (
+          <Suspense
+            fallback={
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "250px",
+                }}
+              >
+                <Loading />
+              </div>
+            }
+          >
+            <Credits onClose={handleCreditsClick} />
+          </Suspense>
+        )}
       </div>
       {/* show Popup profile */}
       {showProfile && (

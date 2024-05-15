@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./style/ShowPost.css";
 import { useAuth, useClerk } from "@clerk/clerk-react";
-import { Button } from "@mui/material";
+import { Button } from "@mui/material"; // Added CircularProgress for loading indicator
 import { toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 import { SERVER_BASE_URL } from "../config/utils.config";
 
-import verified_image from "../assets/verified_image.gif";
+import Loading from "./Loading";
 
 //* Function to convert timestamp to time ago format
 function timeAgo(timestamp) {
@@ -37,8 +37,9 @@ function timeAgo(timestamp) {
 
 function ShowPost({ usernameSearch }) {
   const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true); // State to track loading
 
-  console.log(usernameSearch);
+  // console.log(usernameSearch);
 
   //* Apply filtering if usernameSearch is provided, otherwise show all comments
   const filteredComments = usernameSearch
@@ -49,7 +50,7 @@ function ShowPost({ usernameSearch }) {
       )
     : comments;
 
-  console.log(filteredComments);
+  // console.table(filteredComments);
 
   //! Api Auth
   const { getToken } = useAuth();
@@ -60,31 +61,21 @@ function ShowPost({ usernameSearch }) {
       try {
         const token = await getToken();
 
-        const response = await Axios.get(
-          `${SERVER_BASE_URL}/api/getcomments?page=${page}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setComments(response.data);
+        const response = await Axios.get(`${SERVER_BASE_URL}/api/getcomments`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setComments(response.data.reverse());
+        setLoading(false); //* Set loading to false once data is fetched
       } catch (error) {
         console.error("Error fetching comments:", error);
+        setLoading(true); //* Set loading to true in case of error
       }
     };
-
-    // Initially fetch comments with page = 1
-    fetchComments(1);
-
-    // Set a timeout to fetch comments again with page = 0 after 5 seconds
-    const timeoutId = setTimeout(() => {
-      fetchComments(0);
-    }, 5000);
-
-    // Clear the timeout and fetch comments with page = 1 when the component unmounts or dependencies change
-    return () => clearTimeout(timeoutId);
+    
+    fetchComments();
   }, [getToken]);
 
   const handleDeletePost = async (commentId) => {
@@ -145,43 +136,59 @@ function ShowPost({ usernameSearch }) {
 
   return (
     <div className="feed">
-      {filteredComments.map((comment) => (
-        <div key={comment._id} className="users-posts">
-          <div className="users-info">
-            <div className="users-img-box">
-              <img
-                draggable="false"
-                src={comment.user.image}
-                alt="user-image"
-              />
-            </div>
-            <div className="posted-user">
-              <div className="users-names">
-                <h4>
-                  {`${comment.user.firstname.toUpperCase()} ${comment.user.lastname.toUpperCase()}`}
-                  {/*//* <img src={verified_image} alt="verified_image" /> */}
-                </h4>
-                <p>@{comment.user.username} </p>
-              </div>
-              <span>{timeAgo(comment.createdAt)}</span>
-              {/* Display time ago format */}
-            </div>
-          </div>
-          <div
-            className={comment.flagged ? "comment-box flagged" : "comment-box"}
-          >
-            {/* Adjust color as needed */}
-            <p>{comment.content}</p>
-            {user &&
-              user.username === comment.user.username && ( // Compare user IDs
-                <DeleteAlertDialog commentId={comment._id} />
-              )}
-          </div>
-          <div className="feed-hr-end">
-            <hr />
-          </div>
+      {loading ? ( // Show loading indicator if data is loading
+        <div
+          className="users-posts"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "300px",
+          }}
+        >
+          <Loading />
         </div>
-      ))}
+      ) : (
+        filteredComments.map((comment) => (
+          <div key={comment._id} className="users-posts">
+            <div className="users-info">
+              <div className="users-img-box">
+                <img
+                  draggable="false"
+                  src={comment.user.image}
+                  alt="user-image"
+                />
+              </div>
+              <div className="posted-user">
+                <div className="users-names">
+                  <h4>
+                    {`${comment.user.firstname.toUpperCase()} ${comment.user.lastname.toUpperCase()}`}
+                    {/*//* <img src={verified_image} alt="verified_image" /> */}
+                  </h4>
+                  <p>@{comment.user.username} </p>
+                </div>
+                <span>{timeAgo(comment.createdAt)}</span>
+                {/* Display time ago format */}
+              </div>
+            </div>
+            <div
+              className={
+                comment.flagged ? "comment-box flagged" : "comment-box"
+              }
+            >
+              {/* Adjust color as needed */}
+              <p>{comment.content}</p>
+              {user &&
+                user.username === comment.user.username && ( // Compare user IDs
+                  <DeleteAlertDialog commentId={comment._id} />
+                )}
+            </div>
+            <div className="feed-hr-end">
+              <hr />
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }

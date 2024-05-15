@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 import { SERVER_BASE_URL } from "../config/utils.config";
 
-function Post({ refreshNotifications , usernameSearch }) {
+function Post({ refreshNotifications, usernameSearch, flaggedCommentsCount }) {
   const { user } = useClerk();
   const [inputValue, setInputValue] = useState(""); //? Post Input
 
@@ -34,6 +34,14 @@ function Post({ refreshNotifications , usernameSearch }) {
       if (!inputValue) {
         // If input value is missing, show alert notification
         toast.error("Please enter something before posting");
+        return;
+      }
+      if (flaggedCommentsCount >= 5) {
+        // Check if the count of flagged comments is greater than or equal to 5
+        toast.warning(
+          `"You cannot post because there are too many flagged Bully Posts.
+          Please delete flagged posts before posting again."`
+        );
         return;
       }
 
@@ -110,7 +118,7 @@ function Post({ refreshNotifications , usernameSearch }) {
       </div>
 
       <div className="show-post">
-        <ShowPost key={refreshShowPost} usernameSearch={usernameSearch}/>
+        <ShowPost key={refreshShowPost} usernameSearch={usernameSearch} />
       </div>
     </div>
   );
