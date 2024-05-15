@@ -50,7 +50,7 @@ const teamMembers = [
   {
     name: "Roshan Jacob",
     role: "Data Science",
-    avatar:"https://tse3.mm.bing.net/th?id=OIP.Ww6f39-kHjkz3dDGBPSrWgHaHa&pid=Api&P=0&h=220",
+    avatar: roshan_profile,
         social: [
       { icon: <LinkedInIcon />, link: "http://linkedin.com/in/roshanjacob-" },
       { icon: <GitHubIcon />, link: "https://github.com/RoshanJacob10" },
