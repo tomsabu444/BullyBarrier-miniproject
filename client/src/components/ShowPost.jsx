@@ -74,7 +74,7 @@ function ShowPost({ usernameSearch }) {
         setLoading(true); //* Set loading to true in case of error
       }
     };
-    
+
     fetchComments();
   }, [getToken]);
 

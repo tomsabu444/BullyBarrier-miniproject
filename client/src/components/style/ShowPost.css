@@ -6,13 +6,14 @@
     /* Adjust the value according to your design */
 }
 
-.feed-hr-end{
+.feed-hr-end {
     padding-bottom: 10px;
 }
 
-.feed-hr-end hr{
+.feed-hr-end hr {
     opacity: .5;
 }
+
 .users-posts {
 
     background-color: var(--color-primary);
@@ -52,7 +53,8 @@
 .posted-user {
     display: flex;
     justify-content: space-between;
-    width: 100%; /* Ensure it takes full width */
+    width: 100%;
+    /* Ensure it takes full width */
     align-items: center;
 }
 
@@ -61,15 +63,17 @@
     font-size: small;
     color: var(--color-ascent2);
 }
+
 .users-names h4 {
     font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .users-names h4 img {
     margin-left: 10px;
-   width: 20px;
+    width: 20px;
 }
 
 .comment-box {
@@ -77,13 +81,13 @@
     justify-content: start;
     align-items: center;
     padding-left: 20px;
-   /* background-color: rgba(37, 131, 37, 0.322);*/
+    /* background-color: rgba(37, 131, 37, 0.322);*/
     color: rgb(44, 252, 2);
     margin: 20px;
 }
 
-.comment-box.flagged  {
-  /*  background-color: rgba(163, 46, 31, 0.322);*/
+.comment-box.flagged {
+    /*  background-color: rgba(163, 46, 31, 0.322);*/
     color: rgb(252, 2, 2);
 }
 

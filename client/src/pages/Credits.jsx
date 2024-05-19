@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./style/Credits.css";
-
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-
-//profile
-
+//profile image
 import tomsabu_profile from "../assets/tomsabu_profile.jpg";
 import sam_profile from "../assets/sam_profile.jpeg";
 import roshan_profile from "../assets/roshan_profile.jpeg";
@@ -51,7 +48,7 @@ const teamMembers = [
     name: "Roshan Jacob",
     role: "Data Science",
     avatar: roshan_profile,
-        social: [
+    social: [
       { icon: <LinkedInIcon />, link: "http://linkedin.com/in/roshanjacob-" },
       { icon: <GitHubIcon />, link: "https://github.com/RoshanJacob10" },
     ],

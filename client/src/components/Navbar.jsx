@@ -14,15 +14,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import LogoImage from "../assets/logo-no-background.png";
 import { Link } from "react-router-dom";
 
-function Navbar({ onSearch  }) {
+function Navbar({ onSearch }) {
   const { user } = useClerk();
 
   const handleUserSearch = (e) => {
     const searchValue = e.target.value.trim(); // Trim any leading or trailing whitespace
     onSearch(searchValue);
   };
-  
-   
 
   //user name to lowerCase
   const handleFirstname = () => {
@@ -43,9 +41,14 @@ function Navbar({ onSearch  }) {
           </div>
         </div>
 
-        <div className="nav_searchbaar"> 
-          <input type="text" name="null" id="null" placeholder="Search By Username...."
-          onChange={handleUserSearch} />
+        <div className="nav_searchbaar">
+          <input
+            type="text"
+            name="null"
+            id="null"
+            placeholder="Search By Username...."
+            onChange={handleUserSearch}
+          />
           {/* <div className="search_icon">
             <SearchIcon id="search" />
           </div> */}
