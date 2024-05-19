@@ -37,13 +37,10 @@ app.use((err, req, res, next) => {
 
 //! comment moderation
 app.use("/api", analyseComment);
-
 //! Show Post
 app.use("/api", getcomments);
-
 //! flagged post
 app.use("/api", AlertUser);
-
 //! Delete Post
 app.use("/api", deleteComment);
 
