@@ -1,5 +1,5 @@
 /*
-* Content Moderation from incomming comment from Frontend Tweet
+* Content Moderation from incoming comment from Frontend Tweet
 *  return message notification to front end
 */
 
