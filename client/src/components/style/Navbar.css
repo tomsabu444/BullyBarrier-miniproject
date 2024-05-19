@@ -19,19 +19,19 @@
     padding-left: 20px;
 }
 
-.title-box .title-logo{
+.title-box .title-logo {
     width: 45px;
-    height:  auto;
+    height: auto;
     object-fit: contain;
 }
 
-.title-name{
+.title-name {
     padding-left: 10px;
     font-size: 1.25rem;
     font-size: 1.5rem;
     color: #0066ff;
     font-weight: 600;
-    
+
 }
 
 .nav_searchbaar {
@@ -90,10 +90,11 @@
         width: 100%;
     }
 
-    .nav_searchbaar{
+    .nav_searchbaar {
         display: none;
     }
-    .profile-box h2{
+
+    .profile-box h2 {
         display: none;
     }
 }

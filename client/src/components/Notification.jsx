@@ -4,7 +4,7 @@ import { Badge, Box } from "@mui/material"; // Added CircularProgress for loadin
 import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 import Axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
-import Loading from "./Loading"
+import Loading from "./Loading";
 import { SERVER_BASE_URL } from "../config/utils.config";
 
 function Notify({ onFlaggedCommentsCountChange }) {
@@ -26,7 +26,7 @@ function Notify({ onFlaggedCommentsCountChange }) {
           },
         });
         setFlaggedComments(response.data);
-        
+
         //! Pass the count of flagged comments to the Home component
         onFlaggedCommentsCountChange(response.data.length);
         setLoading(false); // Set loading to false once data is fetched
@@ -51,8 +51,15 @@ function Notify({ onFlaggedCommentsCountChange }) {
       </div>
       <hr />
       {loading ? ( // Show loading indicator if data is loading
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
-          <Loading  />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "200px",
+          }}
+        >
+          <Loading />
         </Box>
       ) : (
         <div className="notification">

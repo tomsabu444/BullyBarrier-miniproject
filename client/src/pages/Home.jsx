@@ -18,10 +18,6 @@ function Home() {
 
   const [searchQuery, setSearchQuery] = useState(""); // Declare searchQuery state
 
-  // const handleSearch = (searchQuery) => {
-  //   setSearchQuery(searchQuery);
-  // };
-
   //! bully post count pass from notification
   const [flaggedCommentsCount, setFlaggedCommentsCount] = useState(0);
 

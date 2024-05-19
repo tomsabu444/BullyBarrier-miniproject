@@ -9,14 +9,14 @@
     color: var(--color-ascent1);
     padding: 10px 20px 10px 20px;
 
-    
+
 }
 
 
-.notify .nofity-title{
+.notify .nofity-title {
     display: flex;
     align-items: center;
-    justify-content: center   ;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -26,12 +26,12 @@
     text-wrap: wrap;
 }
 
-.Nofity-icon{
+.Nofity-icon {
     color: var(--color-blue);
     padding-bottom: 10px;
 }
 
-.notification{
+.notification {
     max-height: calc(90vh - 200px);
     overflow-y: auto;
 }
