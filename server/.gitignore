@@ -13,7 +13,7 @@ dist-ssr
 *.local
 
 .env
-
+functions
 #test
 test/*
 
