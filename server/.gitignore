@@ -13,7 +13,9 @@ dist-ssr
 *.local
 
 .env
-
+functions
+.firebaserc
+firebase.json
 #test
 test/*
 
