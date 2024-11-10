@@ -78,7 +78,7 @@ function SideBar() {
 
         {/* Show Credits component */}
 
-        {showCredits && (
+        {/* {showCredits && (
           <Suspense
             fallback={
               <div
@@ -95,7 +95,7 @@ function SideBar() {
           >
             <Credits onClose={handleCreditsClick} />
           </Suspense>
-        )}
+        )} */}
       </div>
       {/* show Popup profile */}
       {showProfile && (
